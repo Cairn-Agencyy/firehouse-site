@@ -1,0 +1,690 @@
+<title>Firehouse Pools</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap">
+<style>
+  :root{
+    /* Palette pulled from Firehouse's own built work and wordmark.
+       Travertine + pool teal from the Hardy Rd and POV project photos;
+       charcoal from the logo lockup; navy from the Hardy Rd cushions. */
+    --ink:        #14110F;
+    --ink-soft:   #2A2521;
+    --stone:      #F4EFE6;
+    --stone-warm: #EAE1D2;
+    --stone-line: #D8CCB8;
+    --pool:       #1E5049;
+    --pool-lift:  #2D7065;
+    --navy:       #1C2B4A;
+    --ember:      #B23A12;
+    --paper:      #FFFCF7;
+    --text:       #221E1A;
+    --text-mute:  #6B6259;
+
+    --maxw: 1180px;
+    --gut: 20px;
+  }
+
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--stone);
+    color:var(--text);
+    font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
+
+  h1,h2,h3{
+    font-family:"Fraunces",Georgia,serif;
+    font-weight:600;
+    line-height:1.1;
+    text-wrap:balance;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  h2{font-size:clamp(1.85rem,4vw,2.85rem)}
+  h3{font-size:1.2rem;letter-spacing:0}
+
+  .eyebrow{
+    font-family:"Archivo",sans-serif;
+    font-size:.72rem;
+    font-weight:600;
+    letter-spacing:.17em;
+    text-transform:uppercase;
+    color:var(--pool);
+    margin:0 0 .85rem;
+  }
+  .eyebrow.on-dark{color:#9DC4BB}
+
+  /* ---------- header ---------- */
+  .topbar{
+    background:var(--ink);
+    color:#fff;
+    position:sticky;
+    top:env(safe-area-inset-top,0px);
+    z-index:40;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .topbar-in{
+    max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut);
+    padding-block:.8rem;
+    display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;
+  }
+  .topbar img{width:170px;height:auto}
+  nav{margin-left:auto;display:flex;gap:1.4rem;flex-wrap:wrap;align-items:center}
+  nav a{
+    font-size:.84rem;font-weight:500;text-decoration:none;
+    letter-spacing:.04em;text-transform:uppercase;color:#E8E2D9;
+    padding-block:.2rem;border-bottom:1.5px solid transparent;
+  }
+  nav a:hover,nav a:focus-visible{color:#fff;border-bottom-color:var(--ember)}
+  .tel{
+    font-family:"Fraunces",Georgia,serif;font-size:1.02rem;font-weight:600;
+    color:#fff;text-decoration:none;white-space:nowrap;
+  }
+  .tel:hover{color:#F2B79E}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;background:var(--ink);overflow:hidden}
+  .hero-img{
+    position:absolute;inset:0;
+    background-image:url("img/Firehouse-Pools-4.jpg");
+    background-size:cover;background-position:center 58%;
+    transform:scale(1.06);
+    animation:drift 26s ease-in-out infinite alternate;
+  }
+  @keyframes drift{
+    from{transform:scale(1.06) translate3d(0,0,0)}
+    to{transform:scale(1.13) translate3d(-1.4%,-1.2%,0)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hero-img{animation:none;transform:scale(1.02)}
+  }
+  .hero-veil{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(20,17,15,.70) 0%,rgba(20,17,15,.34) 42%,rgba(20,17,15,.78) 100%);
+  }
+  .hero-in{
+    position:relative;
+    max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut);
+    padding-block:clamp(4.5rem,13vw,8rem);
+    color:#fff;
+  }
+  .hero-in h1{
+    font-size:clamp(2.3rem,6.2vw,4.3rem);
+    font-weight:600;max-width:15ch;
+    text-shadow:0 2px 24px rgba(0,0,0,.4);
+  }
+  .hero-sub{
+    margin:1.3rem 0 0;max-width:46ch;font-size:1.08rem;
+    color:#EDE6DB;text-shadow:0 1px 12px rgba(0,0,0,.5);
+  }
+  .hero-cta{display:flex;gap:.85rem;flex-wrap:wrap;margin-top:2rem}
+
+  .btn{
+    display:inline-block;font-family:"Archivo",sans-serif;
+    font-size:.86rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+    padding:.95rem 1.7rem;text-decoration:none;border:1.5px solid transparent;
+    transition:background .18s,color .18s,border-color .18s;
+  }
+  .btn-solid{background:var(--ember);color:#fff}
+  .btn-solid:hover,.btn-solid:focus-visible{background:#8E2C0C}
+  .btn-ghost{border-color:rgba(255,255,255,.55);color:#fff}
+  .btn-ghost:hover,.btn-ghost:focus-visible{background:#fff;color:var(--ink);border-color:#fff}
+  .btn-dark{background:var(--pool);color:#fff}
+  .btn-dark:hover,.btn-dark:focus-visible{background:#163B36}
+
+  /* ---------- credentials strip ---------- */
+  .creds{background:var(--ink-soft);color:#EDE6DB}
+  .creds-in{
+    max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut);
+    padding-block:1.5rem;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;
+  }
+  .cred span{
+    display:block;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
+    color:#9DC4BB;margin-bottom:.3rem;
+  }
+  .cred strong{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.05rem;display:block;line-height:1.3}
+  @media (max-width:640px){
+    .creds-in{grid-template-columns:1fr;gap:1rem}
+  }
+
+  /* ---------- generic section ---------- */
+  section{scroll-margin-top:84px}
+  .pad{padding-block:clamp(3.5rem,8vw,6rem)}
+  .lede{font-size:1.1rem;max-width:62ch;color:var(--text-mute);margin:1.1rem 0 0}
+
+  /* ---------- feature split ---------- */
+  .split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  @media (max-width:860px){.split{grid-template-columns:1fr}}
+  .split figure{margin:0;position:relative}
+  .split figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+  .featlist{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;gap:.1rem}
+  .featlist li{
+    padding:.72rem 0 .72rem 1.5rem;border-bottom:1px solid var(--stone-line);
+    position:relative;font-size:.97rem;
+  }
+  .featlist li::before{
+    content:"";position:absolute;left:0;top:1.28rem;
+    width:7px;height:7px;background:var(--pool);
+  }
+  .featlist li b{font-weight:600}
+
+  /* ---------- services ---------- */
+  #services{background:var(--paper)}
+  .svc-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:1px;background:var(--stone-line);
+    border:1px solid var(--stone-line);margin-top:2.4rem;
+  }
+  @media (max-width:860px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.svc-grid{grid-template-columns:1fr}}
+  .svc{background:var(--paper);padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.5rem}
+  .svc .num{
+    font-size:.7rem;font-weight:600;letter-spacing:.14em;color:var(--text-mute);
+    font-variant-numeric:tabular-nums;
+  }
+  .svc h3{font-family:"Fraunces",Georgia,serif;font-size:1.13rem}
+  .svc p{margin:0;font-size:.92rem;color:var(--text-mute);line-height:1.55}
+  .svc.is-finance{background:var(--stone-warm)}
+
+  /* ---------- maintenance ---------- */
+  #maintenance{background:var(--pool);color:#F2EFE8}
+  #maintenance h2{color:#fff}
+  #maintenance .lede{color:#CBDED9}
+  .maint-top{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:start}
+  @media (max-width:860px){.maint-top{grid-template-columns:1fr}}
+  .maint-list{list-style:none;margin:0;padding:0;display:grid;gap:.1rem}
+  .maint-list li{
+    padding:.7rem 0 .7rem 1.6rem;position:relative;font-size:.96rem;
+    border-bottom:1px solid rgba(255,255,255,.14);color:#E6EFEC;
+  }
+  .maint-list li::before{
+    content:"";position:absolute;left:0;top:1.22rem;width:7px;height:7px;background:#8FBDB2;
+  }
+  .plans{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.6rem}
+  @media (max-width:980px){.plans{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:520px){.plans{grid-template-columns:1fr}}
+  .plan{
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);
+    padding:1.5rem 1.35rem;display:flex;flex-direction:column;gap:.55rem;
+    position:relative;
+  }
+  .plan.is-popular{border-color:#D9A441;background:rgba(217,164,65,.13)}
+  .plan .badge{
+    position:absolute;top:-.65rem;left:1.35rem;background:#D9A441;color:#1C1606;
+    font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    padding:.25rem .55rem;
+  }
+  .plan h3{color:#fff;font-family:"Fraunces",Georgia,serif;font-size:1.1rem}
+  .plan .price{
+    font-family:"Fraunces",Georgia,serif;font-size:1.75rem;font-weight:700;color:#fff;
+    line-height:1;font-variant-numeric:tabular-nums;
+  }
+  .plan .price small{font-size:.8rem;font-weight:400;color:#AECCC4;letter-spacing:.02em}
+  .plan ul{list-style:none;margin:0;padding:0;display:grid;gap:.4rem}
+  .plan li{font-size:.86rem;color:#CBDED9;line-height:1.4;padding-left:1.1rem;position:relative}
+  .plan li::before{content:"✓";position:absolute;left:0;color:#8FBDB2;font-weight:700}
+  .plan .note{margin:.3rem 0 0;font-size:.82rem;color:#AECCC4;line-height:1.5;font-style:italic}
+
+  .pending{
+    border:1.5px dashed rgba(255,255,255,.45);
+    background:rgba(0,0,0,.18);
+    padding:.85rem 1.1rem;margin-top:1.5rem;
+    font-size:.84rem;color:#D9E7E3;
+  }
+  .pending b{color:#fff;font-weight:600}
+
+  /* ---------- gallery ---------- */
+  .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:2.4rem}
+  .gal figure{margin:0;overflow:hidden}
+  .gal img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .5s ease}
+  .gal figure:hover img{transform:scale(1.05)}
+  .gal .tall{grid-column:span 2;grid-row:span 2}
+  .gal .tall img{aspect-ratio:1/1}
+  @media (max-width:760px){
+    .gal{grid-template-columns:repeat(2,1fr)}
+    .gal .tall{grid-column:span 2;grid-row:auto}
+  }
+
+  /* ---------- social strip ---------- */
+  #social{background:var(--stone-warm);border-block:1px solid var(--stone-line)}
+  .social-slot{
+    margin-top:1.8rem;border:1.5px dashed var(--stone-line);background:var(--paper);
+    padding:2.2rem 1.4rem;text-align:center;
+  }
+  .social-slot .rail{
+    display:flex;gap:10px;justify-content:center;margin-bottom:1.2rem;flex-wrap:wrap;
+  }
+  .social-slot .rail i{
+    display:block;width:92px;height:92px;background:var(--stone-warm);
+    border:1px solid var(--stone-line);
+  }
+  .social-slot p{margin:0;font-size:.88rem;color:var(--text-mute);max-width:52ch;margin-inline:auto}
+
+  /* ---------- contact ---------- */
+  #contact{background:var(--ink);color:#EDE6DB}
+  #contact h2{color:#fff}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:start;margin-top:2.4rem}
+  @media (max-width:860px){.form-grid{grid-template-columns:1fr}}
+  form{display:grid;gap:1rem}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  @media (max-width:520px){.row2{grid-template-columns:1fr}}
+  label{display:block;font-size:.74rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:#B9B0A4;margin-bottom:.4rem}
+  input,select,textarea{
+    width:100%;font-family:inherit;font-size:.97rem;color:#fff;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);
+    padding:.78rem .85rem;border-radius:0;
+  }
+  textarea{min-height:108px;resize:vertical}
+  input:focus,select:focus,textarea:focus{
+    outline:2px solid var(--ember);outline-offset:1px;background:rgba(255,255,255,.1);
+  }
+  select option{background:var(--ink);color:#fff}
+  fieldset{border:1px solid rgba(255,255,255,.22);padding:.9rem 1rem 1rem;margin:0}
+  fieldset legend{font-size:.74rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:#B9B0A4;padding:0 .3rem}
+  .check-grid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem .8rem;margin-top:.4rem}
+  @media (max-width:520px){.check-grid{grid-template-columns:1fr}}
+  .check-grid label{display:flex;align-items:center;gap:.55rem;font-size:.88rem;color:#EDE6DB;text-transform:none;letter-spacing:0;font-weight:400}
+  .check-grid input[type=checkbox]{width:auto;accent-color:var(--ember)}
+  .consent{
+    font-size:.82rem;color:#B9B0A4;line-height:1.55;
+    border-left:2px solid var(--ember);padding-left:.9rem;
+  }
+  .consent a{color:#E8DFD4}
+  .contact-aside dl{margin:0;display:grid;gap:1.3rem}
+  .contact-aside dt{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#9DC4BB;margin-bottom:.25rem}
+  .contact-aside dd{margin:0;font-size:1.02rem;color:#EDE6DB}
+  .contact-aside dd a{font-family:"Fraunces",Georgia,serif;font-size:1.3rem;font-weight:600;color:#fff;text-decoration:none}
+
+  /* ---------- footer ---------- */
+  footer{background:#0C0A09;color:#8B837A;font-size:.85rem}
+  .foot-in{
+    max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut);padding-block:2.2rem;
+    display:flex;gap:1.2rem;justify-content:space-between;flex-wrap:wrap;align-items:center;
+  }
+  footer a{color:#B9B0A4}
+  .draftnote{
+    background:#1A1613;color:#A79D91;font-size:.8rem;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .draftnote div{
+    max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut);padding-block:1rem;
+  }
+  .draftnote b{color:#E0D6C8}
+</style>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <img src="img/logo.png" alt="Firehouse Pools">
+    <nav>
+      <a href="#pools">Pools</a>
+      <a href="#services">Services</a>
+      <a href="#maintenance">Maintenance</a>
+      <a href="#work">Our Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="tel" href="tel:+19033402454">(903) 340-2454</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-img" role="presentation"></div>
+  <div class="hero-veil" role="presentation"></div>
+  <div class="hero-in">
+    <h1>Making Your Outdoor Oasis Dreams A Reality</h1>
+    <p class="hero-sub">A firefighter-owned and operated small business building custom pools, spas and
+      outdoor living across north and east Texas. Built on trust, integrity and exceptional craftsmanship.</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="#contact">Start Your Project</a>
+      <a class="btn btn-ghost" href="#maintenance">Pool Maintenance Plans</a>
+    </div>
+  </div>
+</div>
+
+<div class="creds">
+  <div class="creds-in">
+    <div class="cred"><span>Who we are</span><strong>Firefighter owned &amp; family run</strong></div>
+    <div class="cred"><span>Experience</span><strong>15+ years in the pool industry</strong></div>
+    <div class="cred"><span>Where we build</span><strong>Based in Wills Point, we travel to you</strong></div>
+  </div>
+</div>
+
+<section id="pools" class="pad">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow">Custom Pools &amp; Spas</p>
+        <h2>Pools built the way you would build your own</h2>
+        <p class="lede">Sleek and modern, or a natural oasis wrapped in lush greenery. Every project is
+          custom and quoted by our team, with transparency at every step of the process.</p>
+        <ul class="featlist">
+          <li><b>Water features.</b> Sheer descents, spillways, fountains and waterfalls</li>
+          <li><b>Fire elements.</b> Fire bowls, fire walls and flame features paired with water</li>
+          <li><b>Integrated LED lighting</b> designed into the pool from the start</li>
+          <li><b>Pool automation.</b> Lighting, circulation, heating and features from your smartphone or tablet</li>
+        </ul>
+      </div>
+      <figure><img src="img/hardyrd-167.jpg" alt="Custom pool and spa with travertine decking on a Firehouse Pools project"></figure>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="pad">
+  <div class="wrap">
+    <p class="eyebrow">What We Build</p>
+    <h2>Nine ways we finish a backyard</h2>
+    <p class="lede">Pools are where most projects start. They are rarely where they end.</p>
+    <div class="svc-grid">
+      <div class="svc"><span class="num">01</span><h3>Custom Pools</h3><p>In-ground pools and spas, typically built together as one project.</p></div>
+      <div class="svc"><span class="num">02</span><h3>Pool Service &amp; Maintenance</h3><p>Customized service plans tailored to your property and lifestyle.</p></div>
+      <div class="svc"><span class="num">03</span><h3>Patios &amp; Patio Covers</h3><p>Smooth concrete, decorative finishes, stone and paver designs, built-in seating.</p></div>
+      <div class="svc"><span class="num">04</span><h3>Outdoor Kitchens</h3><p>Cooking, counter space and seating built to live outside year round.</p></div>
+      <div class="svc"><span class="num">05</span><h3>Fire Features</h3><p>Fire pits, fire bowls and fire walls, often paired with water.</p></div>
+      <div class="svc"><span class="num">06</span><h3>Landscape Design &amp; Installation</h3><p>Planting and hardscape designed around the pool, not added after it.</p></div>
+      <div class="svc"><span class="num">07</span><h3>Outdoor Lighting</h3><p>Lighting installation that makes the space usable after dark.</p></div>
+      <div class="svc"><span class="num">08</span><h3>Irrigation Repair &amp; Installation</h3><p>New systems and repairs to what is already in the ground.</p></div>
+      <div class="svc is-finance"><span class="num">09</span><h3>Financing</h3><p>Financing is available through our partner so a project can start sooner.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="maintenance" class="pad">
+  <div class="wrap">
+    <p class="eyebrow on-dark">Pool Service &amp; Maintenance</p>
+    <h2>We keep pools running, not just build them</h2>
+    <div class="maint-top">
+      <div>
+        <p class="lede">Whether you need weekly service, seasonal maintenance, or additional support during
+          the busy summer months, we can create a maintenance schedule that fits your needs.</p>
+      </div>
+      <ul class="maint-list">
+        <li>Weekly cleaning, skimming, brushing and debris removal</li>
+        <li>Water testing and chemical balancing</li>
+        <li>Vacuuming, surface brushing and emptying baskets</li>
+        <li>Monitoring chlorine, pH, alkalinity, calcium hardness and stabilizers</li>
+        <li>Filter, pump and equipment inspections</li>
+        <li>Preventative care for pumps, filters, heaters, timers and automation</li>
+      </ul>
+    </div>
+
+    <div class="plans">
+      <div class="plan">
+        <h3>Diamond Plan</h3>
+        <div class="price">$300<small> / month + tax</small></div>
+        <p class="eyebrow on-dark" style="margin-bottom:0">Ultimate Full-Service Care</p>
+        <ul>
+          <li>Vacuuming as needed</li>
+          <li>Skim and net surface</li>
+          <li>Empty pump and skimmer baskets</li>
+          <li>Brush walls, stairs and spa</li>
+          <li>Filter clean every 6 months</li>
+          <li>Water testing and chemicals included</li>
+          <li>Free algae treatments</li>
+          <li>Empty cleaner bag</li>
+        </ul>
+        <p class="note">Includes filter cleans, saves $60 a year. Perfect for a completely hands-off pool.</p>
+      </div>
+      <div class="plan is-popular">
+        <span class="badge">Most Popular</span>
+        <h3>Gold Plan</h3>
+        <div class="price">$250<small> / month + tax</small></div>
+        <p class="eyebrow on-dark" style="margin-bottom:0">Complete Pool Care</p>
+        <ul>
+          <li>Vacuuming as needed</li>
+          <li>Skim and net surface</li>
+          <li>Empty pump and skimmer baskets</li>
+          <li>Brush walls, stairs and spa</li>
+          <li>Water testing and chemicals included</li>
+          <li>Free algae treatments</li>
+          <li>Empty cleaner bag</li>
+        </ul>
+        <p class="note">All the essentials for a clean, safe pool. Our most popular choice.</p>
+      </div>
+      <div class="plan">
+        <h3>Silver Plan</h3>
+        <div class="price">$225<small> / month + tax</small></div>
+        <p class="eyebrow on-dark" style="margin-bottom:0">Mid-Tier Maintenance</p>
+        <ul>
+          <li>Skim and net surface</li>
+          <li>Empty pump and skimmer baskets</li>
+          <li>Brush walls, stairs and spa</li>
+          <li>Water testing and chemicals included</li>
+        </ul>
+        <p class="note">Reliable weekly care without extras.</p>
+      </div>
+      <div class="plan">
+        <h3>Bronze Plan</h3>
+        <div class="price">$200<small> / month + tax</small></div>
+        <p class="eyebrow on-dark" style="margin-bottom:0">Chemical-Only Plan</p>
+        <ul>
+          <li>Water testing and chemicals</li>
+          <li>Empty pump and skimmer baskets</li>
+        </ul>
+        <p class="note">Perfect for DIY pool owners who handle the rest themselves.</p>
+      </div>
+    </div>
+
+    <div class="pending">
+      <b>Good to know.</b> Salt and salt cell cleans are not included in any package and are offered as
+      an add-on. Sign up for weekly service and get a free filter clean.
+    </div>
+  </div>
+</section>
+
+<section id="work" class="pad">
+  <div class="wrap">
+    <p class="eyebrow">Our Work</p>
+    <h2>Recent projects, north and east Texas</h2>
+    <p class="lede">Every photo here is a Firehouse build. No stock imagery anywhere on this site.</p>
+    <div class="gal">
+      <figure class="tall"><img src="img/hardyrd-089.jpg" alt="Lakeside fire pit and built-in seating, Hardy Rd project"></figure>
+      <figure><img src="img/Firehouse-Pools-6.jpg" alt="Completed pool with spa and water feature"></figure>
+      <figure><img src="img/Water-Feature.jpg" alt="Water feature detail with sheer descent"></figure>
+      <figure><img src="img/hardyrd-041.jpg" alt="Patio and outdoor living area"></figure>
+      <figure><img src="img/POVupdates-12.jpg" alt="Pool under construction"></figure>
+      <figure><img src="img/2208POV-24.jpg" alt="Finished pool deck and coping"></figure>
+      <figure><img src="img/Firehouse-Pools-5.jpg" alt="Custom pool with integrated lighting"></figure>
+      <figure><img src="img/hardyrd-096.jpg" alt="Outdoor kitchen and seating"></figure>
+    </div>
+  </div>
+</section>
+
+<section id="social" class="pad">
+  <div class="wrap">
+    <p class="eyebrow">Follow Along</p>
+    <h2>What we posted this week</h2>
+    <p class="lede">The QR code on the truck and on the signs lands here, so this strip keeps the page
+      current without anyone editing it.</p>
+    <div class="social-slot">
+      <div class="rail" role="presentation"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <p><strong>Instagram feed slot.</strong> Runs the full width here, as you asked. Needs the Firehouse
+        Instagram handle connected before it can pull live posts.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="pad">
+  <div class="wrap">
+    <p class="eyebrow on-dark">Get Started</p>
+    <h2>Tell us about your backyard</h2>
+    <div class="form-grid">
+      <form id="leadForm" novalidate>
+        <div class="row2">
+          <div>
+            <label for="fName">First name</label>
+            <input id="fName" name="firstName" type="text" autocomplete="given-name" required>
+          </div>
+          <div>
+            <label for="lName">Last name</label>
+            <input id="lName" name="lastName" type="text" autocomplete="family-name" required>
+          </div>
+        </div>
+        <div class="row2">
+          <div>
+            <label for="fEmail">Email</label>
+            <input id="fEmail" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="fPhone">Phone</label>
+            <input id="fPhone" name="phone" type="tel" autocomplete="tel" required>
+          </div>
+        </div>
+        <div>
+          <label for="fCity">Project address</label>
+          <input id="fCity" name="city" type="text" autocomplete="address-level2">
+        </div>
+        <div class="row2">
+          <div>
+            <label for="fBudget">Estimated budget</label>
+            <select id="fBudget" name="budget" required>
+              <option value="" disabled selected>Select a range</option>
+              <option>$90,000 &ndash; $150,000</option>
+              <option>$150,000 &ndash; $250,000</option>
+              <option>$250,000 &ndash; $500,000</option>
+              <option>$500,000 &ndash; $1,000,000</option>
+              <option>$1,000,000+</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div>
+            <label for="fStart">When do you want to start</label>
+            <select id="fStart" name="startTimeframe">
+              <option>As soon as possible</option>
+              <option>Within 3 months</option>
+              <option>3 to 6 months</option>
+              <option>6 to 12 months</option>
+              <option>Just gathering ideas</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="fService">What are you looking for</label>
+          <select id="fService" name="service">
+            <option>Custom pool or spa</option>
+            <option>Pool service &amp; maintenance</option>
+            <option>Patio or patio cover</option>
+            <option>Outdoor kitchen</option>
+            <option>Fire feature</option>
+            <option>Landscape design &amp; installation</option>
+            <option>Outdoor lighting</option>
+            <option>Irrigation repair or installation</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <fieldset>
+          <legend>Features you're interested in</legend>
+          <div class="check-grid">
+            <label><input type="checkbox" name="features" value="Water features"> Water features</label>
+            <label><input type="checkbox" name="features" value="Fire elements"> Fire elements</label>
+            <label><input type="checkbox" name="features" value="Integrated LED lighting"> Integrated LED lighting</label>
+            <label><input type="checkbox" name="features" value="Pool automation"> Pool automation</label>
+            <label><input type="checkbox" name="features" value="Not sure yet"> Not sure yet</label>
+          </div>
+        </fieldset>
+        <div>
+          <label for="fHeard">How did you hear about us</label>
+          <select id="fHeard" name="hearAbout">
+            <option>Google search</option>
+            <option>Referral from a friend</option>
+            <option>Instagram</option>
+            <option>Facebook</option>
+            <option>Driving by or signage</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="fNotes">Tell us about your vision</label>
+          <textarea id="fNotes" name="notes"></textarea>
+        </div>
+        <p class="consent">By calling or texting Firehouse Pools at (903) 340-2454 you agree to receive
+          text messages about your inquiry. See our <a href="https://fhpools.com/sms-terms/">SMS Terms</a>
+          and our <a href="https://fhpools.com/privacy-policy/">Privacy Policy</a>.</p>
+        <div><button class="btn btn-solid" type="submit">Send My Request</button></div>
+        <p id="formMsg" hidden class="consent"></p>
+      </form>
+
+      <div class="contact-aside">
+        <dl>
+          <dt>Call or text</dt>
+          <dd><a href="tel:+19033402454">(903) 340-2454</a></dd>
+          <dt>Service area</dt>
+          <dd>Based in Wills Point, Texas. We take projects all over, so distance is worth asking about.</dd>
+          <dt>Mail</dt>
+          <dd>P.O. Box 442<br>Wills Point, TX 75169</dd>
+          <dt>Hours</dt>
+          <dd>We answer around the clock.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-in">
+    <div>&copy; 2026 Firehouse Pools. Firefighter owned and operated.</div>
+    <div>
+      <a href="https://fhpools.com/privacy-policy/">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="https://fhpools.com/sms-terms/">SMS Terms</a>
+    </div>
+  </div>
+</footer>
+
+<div class="draftnote">
+  <div><b>Draft preview for review.</b> One item is marked above and waiting on you: the Instagram
+    connection. The contact form collects and validates, and the JobTread connection behind it is
+    the next piece of work.</div>
+</div>
+
+<script>
+  (function(){
+    var form = document.getElementById('leadForm');
+    var msg  = document.getElementById('formMsg');
+    if(!form) return;
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var missing = [];
+      [['fName','First name'],['lName','Last name'],['fEmail','Email'],['fPhone','Phone'],['fBudget','Estimated budget']]
+        .forEach(function(pair){
+          var el = document.getElementById(pair[0]);
+          if(el && !el.value.trim()) missing.push(pair[1]);
+        });
+
+      var email = document.getElementById('fEmail').value.trim();
+      if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) missing.push('a valid email');
+
+      msg.hidden = false;
+      if(missing.length){
+        msg.textContent = 'Still needed: ' + missing.join(', ') + '.';
+        return;
+      }
+
+      /* Lead payload, shaped for the JobTread sync. Not yet posted anywhere:
+         the endpoint and the JobTread field mapping are the next build step. */
+      var lead = {
+        firstName:     document.getElementById('fName').value.trim(),
+        lastName:      document.getElementById('lName').value.trim(),
+        email:         email,
+        phone:         document.getElementById('fPhone').value.trim(),
+        address:       document.getElementById('fCity').value.trim(),
+        budget:        document.getElementById('fBudget').value,
+        startTimeframe:document.getElementById('fStart').value,
+        service:       document.getElementById('fService').value,
+        features:      Array.prototype.slice.call(document.querySelectorAll('input[name=features]:checked')).map(function(c){ return c.value; }),
+        hearAbout:     document.getElementById('fHeard').value,
+        vision:        document.getElementById('fNotes').value.trim(),
+        source:        'Website'
+      };
+      console.log('Lead captured, pending JobTread sync:', lead);
+
+      msg.textContent = 'Thank you. In the finished site this creates your request and alerts the team right away. This preview does not send yet.';
+      form.querySelector('button[type=submit]').disabled = true;
+    });
+  })();
+</script>
