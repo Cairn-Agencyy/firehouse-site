@@ -33,14 +33,22 @@ Do not carry them forward.
 
 ## Imagery
 
-Every photo is a real Firehouse build, pulled from fhpools.com's own media library. Originals in
-`_originals/`, web versions in `img/` at 1280px.
+Every photo is a real Firehouse build. The first 8 gallery photos were pulled from fhpools.com's
+own media library. The rest (15 more, added 2026-11-09) came from Kaylee's `~/Desktop/Cairn/FHPools/`
+export, reviewed and selected individually against still frames, not picked by filename or file
+size alone. Originals in `_originals/`, web versions in `img/` at 1280px wide, JPEG q5 (~190-490KB
+each).
+
+One file in that export, `BeachFamily_FirehousePools_Perspective_8.jpeg`, is a 3D architectural
+render, not a photo. Excluded deliberately. Do not add it later without checking first, since it
+would break this section's "every photo is a real build" claim.
 
 **No placeholder or stock imagery.** A section with no real photo waits rather than shipping with a
 stand-in.
 
-⚠️ Images are JPEG at roughly 250 to 500 KB each, so the page is over the 1 MB guidance. **Convert
-to WebP before launch.** Acceptable for a review draft, not for production.
+⚠️ 23 images plus a 3MB hero video now on the page, well over the 1 MB guidance. **Convert images
+to WebP before launch**, and consider trimming the gallery to the strongest dozen or so. Acceptable
+for a review draft, not for production.
 
 ## Motion
 
