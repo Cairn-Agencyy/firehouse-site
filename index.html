@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>Firehouse Pools</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap">
 <style>
@@ -23,7 +24,8 @@
     --r: 10px;
   }
 
-  html{-webkit-text-size-adjust:100%}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{
     margin:0;
     background:var(--stone);
@@ -180,16 +182,20 @@
   @media (max-width:860px){.split{grid-template-columns:1fr}}
   .split figure{margin:0;position:relative}
   .split figure img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;border-radius:var(--r)}
-  .featlist{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;gap:.1rem}
+  .featlist{list-style:none;margin:1.6rem 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+  @media (max-width:480px){.featlist{grid-template-columns:1fr}}
   .featlist li{
-    padding:.72rem 0 .72rem 1.5rem;border-bottom:1px solid var(--stone-line);
-    position:relative;font-size:.97rem;
+    padding:1rem 1.1rem 1rem 2.2rem;position:relative;font-size:.93rem;
+    background:var(--paper);border-radius:var(--r);line-height:1.45;
+    box-shadow:0 1px 3px rgba(20,17,15,.06);
+    transition:background .2s ease,transform .2s ease,box-shadow .2s ease;
   }
+  .featlist li:hover{background:var(--stone-warm);transform:translateY(-3px);box-shadow:0 10px 20px rgba(20,17,15,.1)}
   .featlist li::before{
-    content:"";position:absolute;left:0;top:1.28rem;
-    width:7px;height:7px;background:var(--pool);
+    content:"";position:absolute;left:1rem;top:1.18rem;
+    width:8px;height:8px;border-radius:50%;background:var(--pool);
   }
-  .featlist li b{font-weight:600}
+  .featlist li b{font-weight:600;display:block}
 
   /* ---------- services ---------- */
   #services{background:var(--paper)}
@@ -200,19 +206,24 @@
   @media (max-width:860px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:520px){.svc-grid{grid-template-columns:1fr}}
   .svc{
-    background:var(--paper);padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;
-    border:1px solid var(--stone-line);border-radius:var(--r);
-    box-shadow:0 1px 2px rgba(20,17,15,.04);
-    transition:box-shadow .2s,transform .2s;
+    background:var(--paper);display:flex;flex-direction:column;
+    border-radius:calc(var(--r) + 6px);overflow:hidden;
+    box-shadow:0 1px 2px rgba(20,17,15,.06);
+    transition:box-shadow .25s ease,transform .25s ease;
   }
-  .svc:hover{box-shadow:0 10px 24px rgba(20,17,15,.08);transform:translateY(-2px)}
+  .svc:hover{box-shadow:0 16px 32px rgba(20,17,15,.14);transform:translateY(-4px)}
+  .svc-body{padding:1.5rem 1.4rem;display:flex;flex-direction:column;gap:.5rem}
+  .svc-photo{margin:0;aspect-ratio:4/3;overflow:hidden}
+  .svc-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+  .svc:hover .svc-photo img{transform:scale(1.06)}
+  .svc:not(:has(.svc-photo)) .svc-body{padding-top:1.8rem}
   .svc .num{
     font-size:.7rem;font-weight:600;letter-spacing:.14em;color:var(--text-mute);
     font-variant-numeric:tabular-nums;
   }
   .svc h3{font-family:"Fraunces",Georgia,serif;font-size:1.13rem}
   .svc p{margin:0;font-size:.92rem;color:var(--text-mute);line-height:1.55}
-  .svc.is-finance{background:var(--stone-warm);border-color:transparent}
+  .svc.is-finance{background:var(--stone-warm)}
 
   /* ---------- maintenance ---------- */
   #maintenance{background:var(--pool);color:#F2EFE8;position:relative}
@@ -225,40 +236,59 @@
   .section-wave svg{display:block;width:100%;height:100%}
   .section-wave.top{top:0;transform:translateY(-99%)}
   .section-wave.bottom{bottom:0;transform:translateY(99%) scaleX(-1)}
-  .maint-top{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:start}
-  @media (max-width:860px){.maint-top{grid-template-columns:1fr}}
-  .maint-list{list-style:none;margin:0;padding:0;display:grid;gap:.1rem}
-  .maint-list li{
-    padding:.7rem 0 .7rem 1.6rem;position:relative;font-size:.96rem;
-    border-bottom:1px solid rgba(255,255,255,.14);color:#E6EFEC;
+  /* ---------- interactive plan picker ---------- */
+  .plan-picker{margin-top:2.2rem}
+  .plan-tab-input{
+    position:absolute;opacity:0;pointer-events:none;
+    width:1px;height:1px;padding:0;margin:0;border:0;background:none;
   }
-  .maint-list li::before{
-    content:"";position:absolute;left:0;top:1.22rem;width:7px;height:7px;background:#8FBDB2;
+  .plan-tabs{display:flex;flex-wrap:wrap;gap:.6rem}
+  .plan-tab{
+    --tier: #8FBDB2;
+    cursor:pointer;padding:.8rem 1.3rem;border-radius:999px;
+    background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.22);
+    font-family:"Fraunces",Georgia,serif;font-size:1rem;color:#F2EFE8;
+    display:flex;align-items:center;gap:.5rem;
+    transition:background .2s ease,border-color .2s ease,transform .2s ease;
   }
-  .plans{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.6rem}
-  @media (max-width:980px){.plans{grid-template-columns:repeat(2,1fr)}}
-  @media (max-width:520px){.plans{grid-template-columns:1fr}}
-  .plan{
-    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);
-    padding:1.5rem 1.35rem;display:flex;flex-direction:column;gap:.55rem;
-    position:relative;border-radius:var(--r);
+  .plan-tab::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--tier)}
+  .plan-tab:hover{transform:translateY(-2px);border-color:var(--tier)}
+  .plan-tab .plan-tab-badge{
+    font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    background:var(--tier);color:#1C1606;padding:.2rem .5rem;border-radius:999px;
   }
-  .plan.is-popular{border-color:#D9A441;background:rgba(217,164,65,.13)}
-  .plan .badge{
-    position:absolute;top:-.65rem;left:1.35rem;background:#D9A441;color:#1C1606;
-    font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-    padding:.25rem .55rem;border-radius:999px;
+  .t-diamond{--tier:#A9C4E6}
+  .t-gold{--tier:#D9A441}
+  .t-silver{--tier:#B9C2BD}
+  .t-bronze{--tier:#C97B4A}
+  #tabDiamond:checked ~ .plan-tabs .t-diamond,
+  #tabGold:checked ~ .plan-tabs .t-gold,
+  #tabSilver:checked ~ .plan-tabs .t-silver,
+  #tabBronze:checked ~ .plan-tabs .t-bronze{
+    background:color-mix(in srgb, var(--tier) 22%, transparent);border-color:var(--tier);
   }
-  .plan h3{color:#fff;font-family:"Fraunces",Georgia,serif;font-size:1.1rem}
-  .plan .price{
-    font-family:"Fraunces",Georgia,serif;font-size:1.75rem;font-weight:700;color:#fff;
-    line-height:1;font-variant-numeric:tabular-nums;
+  .plan-panels{margin-top:1.6rem}
+  .plan-panel{
+    display:none;background:rgba(255,255,255,.06);border-radius:calc(var(--r) + 8px);
+    padding:clamp(1.6rem,4vw,2.4rem);
+    grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start;
   }
-  .plan .price small{font-size:.8rem;font-weight:400;color:#AECCC4;letter-spacing:.02em}
-  .plan ul{list-style:none;margin:0;padding:0;display:grid;gap:.4rem}
-  .plan li{font-size:.86rem;color:#CBDED9;line-height:1.4;padding-left:1.1rem;position:relative}
-  .plan li::before{content:"✓";position:absolute;left:0;color:#8FBDB2;font-weight:700}
-  .plan .note{margin:.3rem 0 0;font-size:.82rem;color:#AECCC4;line-height:1.5;font-style:italic}
+  #tabDiamond:checked ~ .plan-panels .p-diamond,
+  #tabGold:checked ~ .plan-panels .p-gold,
+  #tabSilver:checked ~ .plan-panels .p-silver,
+  #tabBronze:checked ~ .plan-panels .p-bronze{display:grid}
+  @media (max-width:760px){.plan-panel{grid-template-columns:1fr}}
+  .plan-panel-head .price{
+    font-family:"Fraunces",Georgia,serif;font-size:2.1rem;font-weight:700;color:#fff;
+    line-height:1;margin-top:.4rem;font-variant-numeric:tabular-nums;
+  }
+  .plan-panel-head .price small{font-size:.85rem;font-weight:400;color:#AECCC4}
+  .plan-panel-head h3{color:#fff;font-family:"Fraunces",Georgia,serif;font-size:1.4rem}
+  .plan-panel-head p{color:#CBDED9;margin:.6rem 0 0;max-width:40ch}
+  .plan-panel ul{list-style:none;margin:0 0 1.3rem;padding:0;display:grid;gap:.5rem}
+  .plan-panel li{font-size:.92rem;color:#E6EFEC;line-height:1.4;padding-left:1.2rem;position:relative}
+  .plan-panel li::before{content:"✓";position:absolute;left:0;color:#8FBDB2;font-weight:700}
+  .plan-select{align-self:start}
 
   .pending{
     border:1.5px dashed rgba(255,255,255,.45);
@@ -415,15 +445,30 @@
     <h2>Nine ways we finish a backyard</h2>
     <p class="lede">Pools are where most projects start. They are rarely where they end.</p>
     <div class="svc-grid">
-      <div class="svc"><span class="num">01</span><h3>Custom Pools</h3><p>In-ground pools and spas, typically built together as one project.</p></div>
-      <div class="svc"><span class="num">02</span><h3>Pool Service &amp; Maintenance</h3><p>Customized service plans tailored to your property and lifestyle.</p></div>
-      <div class="svc"><span class="num">03</span><h3>Patios &amp; Patio Covers</h3><p>Smooth concrete, decorative finishes, stone and paver designs, built-in seating.</p></div>
-      <div class="svc"><span class="num">04</span><h3>Outdoor Kitchens</h3><p>Cooking, counter space and seating built to live outside year round.</p></div>
-      <div class="svc"><span class="num">05</span><h3>Fire Features</h3><p>Fire pits, fire bowls and fire walls, often paired with water.</p></div>
-      <div class="svc"><span class="num">06</span><h3>Landscape Design &amp; Installation</h3><p>Planting and hardscape designed around the pool, not added after it.</p></div>
-      <div class="svc"><span class="num">07</span><h3>Outdoor Lighting</h3><p>Lighting installation that makes the space usable after dark.</p></div>
-      <div class="svc"><span class="num">08</span><h3>Irrigation Repair &amp; Installation</h3><p>New systems and repairs to what is already in the ground.</p></div>
-      <div class="svc is-finance"><span class="num">09</span><h3>Financing</h3><p>Financing is available through our partner so a project can start sooner.</p></div>
+      <div class="svc">
+        <figure class="svc-photo"><img src="img/Water-Feature.jpg" alt="Sheer descent water feature, a Firehouse custom pool"></figure>
+        <div class="svc-body"><span class="num">01</span><h3>Custom Pools</h3><p>In-ground pools and spas, typically built together as one project.</p></div>
+      </div>
+      <div class="svc">
+        <figure class="svc-photo"><img src="img/hardyrd-041.jpg" alt="Crystal clear, well maintained pool water"></figure>
+        <div class="svc-body"><span class="num">02</span><h3>Pool Service &amp; Maintenance</h3><p>Customized service plans tailored to your property and lifestyle.</p></div>
+      </div>
+      <div class="svc">
+        <figure class="svc-photo"><img src="img/Firehouse-Pools-4.jpg" alt="Finished pool deck and patio"></figure>
+        <div class="svc-body"><span class="num">03</span><h3>Patios &amp; Patio Covers</h3><p>Smooth concrete, decorative finishes, stone and paver designs, built-in seating.</p></div>
+      </div>
+      <div class="svc"><div class="svc-body"><span class="num">04</span><h3>Outdoor Kitchens</h3><p>Cooking, counter space and seating built to live outside year round.</p></div></div>
+      <div class="svc">
+        <figure class="svc-photo"><img src="img/hardyrd-089.jpg" alt="Built-in lakeside fire pit with stone seating"></figure>
+        <div class="svc-body"><span class="num">05</span><h3>Fire Features</h3><p>Fire pits, fire bowls and fire walls, often paired with water.</p></div>
+      </div>
+      <div class="svc">
+        <figure class="svc-photo"><img src="img/pool-spa-landscaped.jpg" alt="Pool surrounded by mature, layered landscaping"></figure>
+        <div class="svc-body"><span class="num">06</span><h3>Landscape Design &amp; Installation</h3><p>Planting and hardscape designed around the pool, not added after it.</p></div>
+      </div>
+      <div class="svc"><div class="svc-body"><span class="num">07</span><h3>Outdoor Lighting</h3><p>Lighting installation that makes the space usable after dark.</p></div></div>
+      <div class="svc"><div class="svc-body"><span class="num">08</span><h3>Irrigation Repair &amp; Installation</h3><p>New systems and repairs to what is already in the ground.</p></div></div>
+      <div class="svc is-finance"><div class="svc-body"><span class="num">09</span><h3>Financing</h3><p>Financing is available through our partner so a project can start sooner.</p></div></div>
     </div>
   </div>
 </section>
@@ -438,81 +483,84 @@
   <div class="wrap">
     <p class="eyebrow on-dark">Pool Service &amp; Maintenance</p>
     <h2>We keep pools running, not just build them</h2>
-    <div class="maint-top">
-      <div>
-        <p class="lede">Whether you need weekly service, seasonal maintenance, or additional support during
-          the busy summer months, we can create a maintenance schedule that fits your needs.</p>
-      </div>
-      <ul class="maint-list">
-        <li>Weekly cleaning, skimming, brushing and debris removal</li>
-        <li>Water testing and chemical balancing</li>
-        <li>Vacuuming, surface brushing and emptying baskets</li>
-        <li>Monitoring chlorine, pH, alkalinity, calcium hardness and stabilizers</li>
-        <li>Filter, pump and equipment inspections</li>
-        <li>Preventative care for pumps, filters, heaters, timers and automation</li>
-      </ul>
-    </div>
+    <p class="lede">Pick the level of care your pool needs.</p>
 
-    <div class="plans">
-      <div class="plan">
-        <h3>Diamond Plan</h3>
-        <div class="price">$300<small> / month + tax</small></div>
-        <p class="eyebrow on-dark" style="margin-bottom:0">Ultimate Full-Service Care</p>
-        <ul>
-          <li>Vacuuming as needed</li>
-          <li>Skim and net surface</li>
-          <li>Empty pump and skimmer baskets</li>
-          <li>Brush walls, stairs and spa</li>
-          <li>Filter clean every 6 months</li>
-          <li>Water testing and chemicals included</li>
-          <li>Free algae treatments</li>
-          <li>Empty cleaner bag</li>
-        </ul>
-        <p class="note">Includes filter cleans, saves $60 a year. Perfect for a completely hands-off pool.</p>
+    <div class="plan-picker">
+      <input type="radio" name="planTab" id="tabDiamond" class="plan-tab-input" checked>
+      <input type="radio" name="planTab" id="tabGold" class="plan-tab-input">
+      <input type="radio" name="planTab" id="tabSilver" class="plan-tab-input">
+      <input type="radio" name="planTab" id="tabBronze" class="plan-tab-input">
+
+      <div class="plan-tabs">
+        <label for="tabDiamond" class="plan-tab t-diamond">Diamond</label>
+        <label for="tabGold" class="plan-tab t-gold">Gold <span class="plan-tab-badge">Popular</span></label>
+        <label for="tabSilver" class="plan-tab t-silver">Silver</label>
+        <label for="tabBronze" class="plan-tab t-bronze">Bronze</label>
       </div>
-      <div class="plan is-popular">
-        <span class="badge">Most Popular</span>
-        <h3>Gold Plan</h3>
-        <div class="price">$250<small> / month + tax</small></div>
-        <p class="eyebrow on-dark" style="margin-bottom:0">Complete Pool Care</p>
-        <ul>
-          <li>Vacuuming as needed</li>
-          <li>Skim and net surface</li>
-          <li>Empty pump and skimmer baskets</li>
-          <li>Brush walls, stairs and spa</li>
-          <li>Water testing and chemicals included</li>
-          <li>Free algae treatments</li>
-          <li>Empty cleaner bag</li>
-        </ul>
-        <p class="note">All the essentials for a clean, safe pool. Our most popular choice.</p>
-      </div>
-      <div class="plan">
-        <h3>Silver Plan</h3>
-        <div class="price">$225<small> / month + tax</small></div>
-        <p class="eyebrow on-dark" style="margin-bottom:0">Mid-Tier Maintenance</p>
-        <ul>
-          <li>Skim and net surface</li>
-          <li>Empty pump and skimmer baskets</li>
-          <li>Brush walls, stairs and spa</li>
-          <li>Water testing and chemicals included</li>
-        </ul>
-        <p class="note">Reliable weekly care without extras.</p>
-      </div>
-      <div class="plan">
-        <h3>Bronze Plan</h3>
-        <div class="price">$200<small> / month + tax</small></div>
-        <p class="eyebrow on-dark" style="margin-bottom:0">Chemical-Only Plan</p>
-        <ul>
-          <li>Water testing and chemicals</li>
-          <li>Empty pump and skimmer baskets</li>
-        </ul>
-        <p class="note">Perfect for DIY pool owners who handle the rest themselves.</p>
+
+      <div class="plan-panels">
+        <div class="plan-panel p-diamond">
+          <div class="plan-panel-head">
+            <h3>Diamond Plan</h3>
+            <div class="price">$300<small> / month + tax</small></div>
+            <p>Completely hands-off. Everything included, filter cleans every 6 months.</p>
+          </div>
+          <div>
+            <ul>
+              <li>Vacuuming, skimming and brushing as needed</li>
+              <li>Water testing, chemicals and free algae treatments</li>
+              <li>Filter clean every 6 months</li>
+            </ul>
+            <a href="#contact" class="btn btn-solid plan-select" data-plan="Diamond Plan">Select Diamond Plan</a>
+          </div>
+        </div>
+        <div class="plan-panel p-gold">
+          <div class="plan-panel-head">
+            <h3>Gold Plan</h3>
+            <div class="price">$250<small> / month + tax</small></div>
+            <p>Our most popular choice. All the essentials for a clean, safe pool.</p>
+          </div>
+          <div>
+            <ul>
+              <li>Vacuuming, skimming and brushing as needed</li>
+              <li>Water testing, chemicals and free algae treatments</li>
+            </ul>
+            <a href="#contact" class="btn btn-solid plan-select" data-plan="Gold Plan">Select Gold Plan</a>
+          </div>
+        </div>
+        <div class="plan-panel p-silver">
+          <div class="plan-panel-head">
+            <h3>Silver Plan</h3>
+            <div class="price">$225<small> / month + tax</small></div>
+            <p>Reliable weekly care without the extras.</p>
+          </div>
+          <div>
+            <ul>
+              <li>Skim and net surface, empty baskets</li>
+              <li>Water testing and chemicals included</li>
+            </ul>
+            <a href="#contact" class="btn btn-solid plan-select" data-plan="Silver Plan">Select Silver Plan</a>
+          </div>
+        </div>
+        <div class="plan-panel p-bronze">
+          <div class="plan-panel-head">
+            <h3>Bronze Plan</h3>
+            <div class="price">$200<small> / month + tax</small></div>
+            <p>For DIY pool owners who handle the rest themselves.</p>
+          </div>
+          <div>
+            <ul>
+              <li>Water testing and chemicals</li>
+              <li>Empty pump and skimmer baskets</li>
+            </ul>
+            <a href="#contact" class="btn btn-solid plan-select" data-plan="Bronze Plan">Select Bronze Plan</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="pending">
-      <b>Good to know.</b> Salt and salt cell cleans are not included in any package and are offered as
-      an add-on. Sign up for weekly service and get a free filter clean.
+      <b>Good to know.</b> Salt cell cleans are an add-on. Sign up for weekly service, get a free filter clean.
     </div>
   </div>
 </section>
@@ -710,6 +758,25 @@
         nav.classList.remove('is-open');
         toggle.setAttribute('aria-expanded', 'false');
       }
+    });
+  })();
+
+  (function(){
+    var buttons = document.querySelectorAll('.plan-select');
+    var service = document.getElementById('fService');
+    var notes = document.getElementById('fNotes');
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var plan = btn.getAttribute('data-plan');
+        if(service){
+          Array.prototype.forEach.call(service.options, function(opt){
+            if(opt.text.indexOf('maintenance') !== -1) opt.selected = true;
+          });
+        }
+        if(notes && !notes.value){
+          notes.value = "I'm interested in the " + plan + ".";
+        }
+      });
     });
   })();
 </script>
