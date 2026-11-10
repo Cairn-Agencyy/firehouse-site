@@ -87,6 +87,25 @@
     font-family:"Fraunces",Georgia,serif;font-size:1.02rem;font-weight:600;
     color:#fff;text-decoration:none;white-space:nowrap;
   }
+  .nav-toggle{
+    display:none;margin-left:auto;background:none;border:0;padding:.4rem;
+    cursor:pointer;color:#fff;
+  }
+  .nav-toggle svg{display:block;width:24px;height:24px}
+  @media (max-width:760px){
+    .topbar-in{flex-wrap:nowrap;gap:.7rem}
+    .topbar img{width:130px;order:1}
+    nav{
+      display:none;position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:flex-start;gap:0;
+      background:var(--ink);border-bottom:1px solid rgba(255,255,255,.1);
+      padding:.5rem var(--gut) 1rem;
+    }
+    nav.is-open{display:flex}
+    nav a{padding-block:.65rem;width:100%;border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-toggle{display:block;order:3;flex-shrink:0}
+    .tel{order:2;margin-left:auto;font-size:.9rem;white-space:nowrap}
+  }
   .tel:hover{color:#F2B79E}
 
   /* ---------- hero ---------- */
@@ -325,7 +344,7 @@
 <header class="topbar">
   <div class="topbar-in">
     <img src="img/logo.png" alt="Firehouse Pools">
-    <nav>
+    <nav id="mainNav">
       <a href="#pools">Pools</a>
       <a href="#services">Services</a>
       <a href="#maintenance">Maintenance</a>
@@ -333,6 +352,9 @@
       <a href="#contact">Contact</a>
     </nav>
     <a class="tel" href="tel:+19033402454">(903) 340-2454</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
   </div>
 </header>
 
@@ -375,7 +397,7 @@
           <li><b>Pool automation.</b> Lighting, circulation, heating and features from your smartphone or tablet</li>
         </ul>
       </div>
-      <figure><img src="img/hardyrd-167.jpg" alt="Custom pool and spa with travertine decking on a Firehouse Pools project"></figure>
+      <figure><img src="img/pool-modern-spa-shelf.jpg" alt="Modern custom pool with raised tile spa and tanning shelf"></figure>
     </div>
   </div>
 </section>
@@ -660,6 +682,24 @@
     connection. The contact form collects and validates, and the JobTread connection behind it is
     the next piece of work.</div>
 </div>
+
+<script>
+  (function(){
+    var toggle = document.getElementById('navToggle');
+    var nav = document.getElementById('mainNav');
+    if(!toggle || !nav) return;
+    toggle.addEventListener('click', function(){
+      var open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.addEventListener('click', function(e){
+      if(e.target.tagName === 'A'){
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
 
 <script>
   (function(){
