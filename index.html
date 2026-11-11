@@ -34,24 +34,27 @@
       <a class="btn btn-ghost" href="maintenance.html">Pool Maintenance Plans</a>
     </div>
   </div>
+  <a class="scroll-cue" href="#pools" aria-label="Scroll down to see more">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </a>
 </div>
 
 <div class="creds">
   <div class="creds-track">
     <div class="creds-in" aria-hidden="false">
-      <div class="cred"><span>Who we are</span><strong>Firefighter owned &amp; family run</strong></div>
+      <div class="cred c-who"><span>Who we are</span><strong>Firefighter owned &amp; family run</strong></div>
       <div class="cred-dot"></div>
-      <div class="cred"><span>Experience</span><strong>15+ years in the pool industry</strong></div>
+      <div class="cred c-exp"><span>Experience</span><strong>15+ years in the pool industry</strong></div>
       <div class="cred-dot"></div>
-      <div class="cred"><span>Where we build</span><strong>Based in Wills Point, we travel to you</strong></div>
+      <div class="cred c-build"><span>Where we build</span><strong>Based in Wills Point, we travel to you</strong></div>
       <div class="cred-dot"></div>
     </div>
     <div class="creds-in" aria-hidden="true">
-      <div class="cred"><span>Who we are</span><strong>Firefighter owned &amp; family run</strong></div>
+      <div class="cred c-who"><span>Who we are</span><strong>Firefighter owned &amp; family run</strong></div>
       <div class="cred-dot"></div>
-      <div class="cred"><span>Experience</span><strong>15+ years in the pool industry</strong></div>
+      <div class="cred c-exp"><span>Experience</span><strong>15+ years in the pool industry</strong></div>
       <div class="cred-dot"></div>
-      <div class="cred"><span>Where we build</span><strong>Based in Wills Point, we travel to you</strong></div>
+      <div class="cred c-build"><span>Where we build</span><strong>Based in Wills Point, we travel to you</strong></div>
       <div class="cred-dot"></div>
     </div>
   </div>
@@ -136,12 +139,13 @@
     <div class="plan-cards">
       <details class="plan-card t-diamond">
         <summary>
+          <div class="plan-card-shine" aria-hidden="true"></div>
+          <span class="plan-card-chevron" aria-hidden="true">+</span>
           <span class="plan-card-name">Diamond</span>
           <span class="plan-card-price">$300<small>/mo</small></span>
-          <span class="plan-card-chevron" aria-hidden="true">+</span>
+          <p class="plan-card-summary">Completely hands-off. Everything included, filter cleans every 6 months.</p>
         </summary>
         <div class="plan-card-body">
-          <p>Completely hands-off. Everything included, filter cleans every 6 months.</p>
           <ul>
             <li>Vacuuming, skimming and brushing as needed</li>
             <li>Water testing, chemicals and free algae treatments</li>
@@ -152,12 +156,14 @@
       </details>
       <details class="plan-card t-gold">
         <summary>
-          <span class="plan-card-name">Gold <span class="plan-card-badge">Popular</span></span>
-          <span class="plan-card-price">$250<small>/mo</small></span>
+          <div class="plan-card-shine" aria-hidden="true"></div>
+          <span class="plan-card-badge">Popular</span>
           <span class="plan-card-chevron" aria-hidden="true">+</span>
+          <span class="plan-card-name">Gold</span>
+          <span class="plan-card-price">$250<small>/mo</small></span>
+          <p class="plan-card-summary">Our most popular choice. All the essentials for a clean, safe pool.</p>
         </summary>
         <div class="plan-card-body">
-          <p>Our most popular choice. All the essentials for a clean, safe pool.</p>
           <ul>
             <li>Vacuuming, skimming and brushing as needed</li>
             <li>Water testing, chemicals and free algae treatments</li>
@@ -167,12 +173,13 @@
       </details>
       <details class="plan-card t-silver">
         <summary>
+          <div class="plan-card-shine" aria-hidden="true"></div>
+          <span class="plan-card-chevron" aria-hidden="true">+</span>
           <span class="plan-card-name">Silver</span>
           <span class="plan-card-price">$225<small>/mo</small></span>
-          <span class="plan-card-chevron" aria-hidden="true">+</span>
+          <p class="plan-card-summary">Reliable weekly care without the extras.</p>
         </summary>
         <div class="plan-card-body">
-          <p>Reliable weekly care without the extras.</p>
           <ul>
             <li>Skim and net surface, empty baskets</li>
             <li>Water testing and chemicals included</li>
@@ -182,12 +189,13 @@
       </details>
       <details class="plan-card t-bronze">
         <summary>
+          <div class="plan-card-shine" aria-hidden="true"></div>
+          <span class="plan-card-chevron" aria-hidden="true">+</span>
           <span class="plan-card-name">Bronze</span>
           <span class="plan-card-price">$200<small>/mo</small></span>
-          <span class="plan-card-chevron" aria-hidden="true">+</span>
+          <p class="plan-card-summary">For DIY pool owners who handle the rest themselves.</p>
         </summary>
         <div class="plan-card-body">
-          <p>For DIY pool owners who handle the rest themselves.</p>
           <ul>
             <li>Water testing and chemicals</li>
             <li>Empty pump and skimmer baskets</li>
@@ -249,8 +257,142 @@
   </div>
 </section>
 
+<section id="contact" class="pad">
+  <div class="section-wave top" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="tanToInk" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="var(--stone-warm)"/>
+          <stop offset="1" stop-color="var(--ink)"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,60 C280,10 520,50 760,28 C1000,6 1220,46 1440,20 L1440,60 Z" fill="url(#tanToInk)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <h2 style="text-align:center">Tell us about your backyard!</h2>
+    <div class="form-grid">
+      <form id="leadForm" novalidate>
+        <div class="row2">
+          <div>
+            <label for="fName">First name</label>
+            <input id="fName" name="firstName" type="text" autocomplete="given-name" required>
+          </div>
+          <div>
+            <label for="lName">Last name</label>
+            <input id="lName" name="lastName" type="text" autocomplete="family-name" required>
+          </div>
+        </div>
+        <div class="row2">
+          <div>
+            <label for="fEmail">Email</label>
+            <input id="fEmail" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="fPhone">Phone</label>
+            <input id="fPhone" name="phone" type="tel" autocomplete="tel" required>
+          </div>
+        </div>
+        <div>
+          <label for="fCity">Project address</label>
+          <input id="fCity" name="city" type="text" autocomplete="address-level2">
+        </div>
+        <div class="row2">
+          <div>
+            <label for="fBudget">Estimated budget</label>
+            <select id="fBudget" name="budget" required>
+              <option value="" disabled selected>Select a range</option>
+              <option>$90,000 &ndash; $150,000</option>
+              <option>$150,000 &ndash; $250,000</option>
+              <option>$250,000 &ndash; $500,000</option>
+              <option>$500,000 &ndash; $1,000,000</option>
+              <option>$1,000,000+</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div>
+            <label for="fStart">When do you want to start</label>
+            <select id="fStart" name="startTimeframe">
+              <option>As soon as possible</option>
+              <option>Within 3 months</option>
+              <option>3 to 6 months</option>
+              <option>6 to 12 months</option>
+              <option>Just gathering ideas</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="fService">What are you looking for</label>
+          <select id="fService" name="service">
+            <option>Custom pool or spa</option>
+            <option>Pool service &amp; maintenance</option>
+            <option>Patio or patio cover</option>
+            <option>Outdoor kitchen</option>
+            <option>Fire feature</option>
+            <option>Landscape design &amp; installation</option>
+            <option>Outdoor lighting</option>
+            <option>Irrigation repair or installation</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <fieldset>
+          <legend>Features you're interested in</legend>
+          <div class="check-grid">
+            <label><input type="checkbox" name="features" value="Water features"> Water features</label>
+            <label><input type="checkbox" name="features" value="Fire elements"> Fire elements</label>
+            <label><input type="checkbox" name="features" value="Integrated LED lighting"> Integrated LED lighting</label>
+            <label><input type="checkbox" name="features" value="Pool automation"> Pool automation</label>
+            <label><input type="checkbox" name="features" value="Not sure yet"> Not sure yet</label>
+          </div>
+        </fieldset>
+        <div>
+          <label for="fHeard">How did you hear about us</label>
+          <select id="fHeard" name="hearAbout">
+            <option>Google search</option>
+            <option>Referral from a friend</option>
+            <option>Instagram</option>
+            <option>Facebook</option>
+            <option>Driving by or signage</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label for="fNotes">Tell us about your vision</label>
+          <textarea id="fNotes" name="notes"></textarea>
+        </div>
+        <p class="consent">By calling or texting Firehouse Pools at (903) 340-2454 you agree to receive
+          text messages about your inquiry. See our <a href="https://fhpools.com/sms-terms/">SMS Terms</a>
+          and our <a href="https://fhpools.com/privacy-policy/">Privacy Policy</a>.</p>
+        <div><button class="btn btn-solid" type="submit">Send My Request</button></div>
+        <p id="formMsg" hidden class="consent"></p>
+      </form>
+
+      <div class="contact-aside">
+        <dl>
+          <dt>Call or text</dt>
+          <dd><a href="tel:+19033402454">(903) 340-2454</a></dd>
+          <dt>Service area</dt>
+          <dd>Based in Wills Point, Texas. We take projects all over.</dd>
+          <dt>Mail</dt>
+          <dd>P.O. Box 442<br>Wills Point, TX 75169</dd>
+          <dt>Hours</dt>
+          <dd>We answer around the clock.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="foot-logo"><a href="index.html"><img src="img/logo.png" alt="Firehouse Pools"></a></div>
+  <div class="foot-social">
+    <a href="tel:+19033402454" aria-label="Call Firehouse Pools">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/firehousepoolstx/" target="_blank" rel="noopener noreferrer" aria-label="Firehouse Pools on Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+  </div>
   <div class="foot-in">
     <div>&copy; 2026 Firehouse Pools. Firefighter owned and operated.</div>
     <div>
@@ -261,3 +403,4 @@
 </footer>
 
 <script src="js/nav.js"></script>
+<script src="js/contact-form.js"></script>
