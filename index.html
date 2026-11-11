@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <title>Firehouse Pools</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap">
 <style>
   :root{
     /* Palette pulled from Firehouse's own built work and wordmark.
@@ -42,9 +42,9 @@
   .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
 
   h1,h2,h3{
-    font-family:"Fraunces",Georgia,serif;
-    font-weight:600;
-    line-height:1.1;
+    font-family:"Montserrat",Arial,sans-serif;
+    font-weight:700;
+    line-height:1.12;
     text-wrap:balance;
     margin:0;
     letter-spacing:-0.01em;
@@ -86,7 +86,7 @@
   }
   nav a:hover,nav a:focus-visible{color:#fff;border-bottom-color:var(--ember)}
   .tel{
-    font-family:"Fraunces",Georgia,serif;font-size:1.02rem;font-weight:600;
+    font-family:"Montserrat",Arial,sans-serif;font-size:1.02rem;font-weight:600;
     color:#fff;text-decoration:none;white-space:nowrap;
   }
   .nav-toggle{
@@ -132,13 +132,23 @@
   }
   .hero-in h1{
     font-size:clamp(2.3rem,6.2vw,4.3rem);
-    font-weight:600;max-width:15ch;
-    text-shadow:0 2px 24px rgba(0,0,0,.4);
+    font-weight:800;max-width:17ch;letter-spacing:-.01em;
+    text-shadow:0 1px 0 rgba(0,0,0,.35), 0 10px 10px rgba(0,0,0,.28), 0 24px 40px rgba(0,0,0,.4);
   }
-  .hero-sub{
-    margin:1.3rem 0 0;max-width:46ch;font-size:1.08rem;
-    color:#EDE6DB;text-shadow:0 1px 12px rgba(0,0,0,.5);
+  .hero-in h1 .accent{
+    color:var(--ember);
+    text-shadow:0 1px 0 rgba(0,0,0,.35), 0 10px 10px rgba(0,0,0,.28), 0 24px 40px rgba(178,58,18,.5);
   }
+  .hero-line1{
+    margin:1.4rem 0 0;max-width:42ch;font-size:1.15rem;font-weight:500;
+    color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.5);
+  }
+  .hero-line2{
+    display:flex;align-items:center;gap:.7rem;
+    margin:.85rem 0 0;max-width:42ch;font-size:.96rem;font-style:italic;
+    color:#C9C1B4;text-shadow:0 1px 12px rgba(0,0,0,.5);
+  }
+  .hero-line2-rule{width:28px;height:1.5px;background:var(--ember);flex-shrink:0}
   .hero-cta{display:flex;gap:.85rem;flex-wrap:wrap;margin-top:2rem}
 
   .btn{
@@ -167,11 +177,12 @@
   }
   .cred{white-space:nowrap}
   .cred span{
-    display:block;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
-    color:#9DC4BB;margin-bottom:.3rem;
+    display:block;font-family:"Montserrat",Arial,sans-serif;font-size:.68rem;
+    letter-spacing:.17em;text-transform:uppercase;font-weight:600;
+    color:#C9C1B4;margin-bottom:.3rem;
   }
-  .cred strong{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.05rem;display:block;line-height:1.3}
-  .cred-dot{width:5px;height:5px;border-radius:50%;background:var(--ember);flex-shrink:0}
+  .cred strong{font-family:"Montserrat",Arial,sans-serif;font-weight:600;font-size:1.05rem;display:block;line-height:1.3}
+  .cred-dot{width:1px;height:22px;background:rgba(255,255,255,.18);flex-shrink:0}
   @keyframes credsMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   @media (prefers-reduced-motion:reduce){.creds-track{animation:none}}
 
@@ -198,6 +209,23 @@
     content:"";position:absolute;left:1rem;top:1.18rem;
     width:8px;height:8px;border-radius:50%;background:var(--pool);
   }
+
+  /* ---------- custom pools: dark bluish band ---------- */
+  #pools{
+    background:linear-gradient(180deg, var(--ink-soft) 0%, var(--navy) 55%, #16314A 100%);
+    color:#EDE6DB;position:relative;
+  }
+  #pools .eyebrow{color:#9DC4BB}
+  #pools .lede{color:#C9C1B4}
+  #pools .featlist li{
+    background:rgba(255,255,255,.07);color:#EDE6DB;box-shadow:none;
+    border:1px solid rgba(255,255,255,.12);
+  }
+  #pools .featlist li:hover{background:rgba(255,255,255,.12);box-shadow:0 10px 24px rgba(0,0,0,.3)}
+  #pools .featlist li::before{background:#8FBDB2}
+  #pools .featlist li b{color:#fff}
+  #pools .split figure img{box-shadow:0 20px 50px rgba(0,0,0,.35)}
+  #pools .section-wave.bottom svg path{fill:#16314A}
   .featlist li b{font-weight:600;display:block}
 
   /* ---------- services ---------- */
@@ -224,7 +252,7 @@
     font-size:.7rem;font-weight:600;letter-spacing:.14em;color:var(--text-mute);
     font-variant-numeric:tabular-nums;
   }
-  .svc h3{font-family:"Fraunces",Georgia,serif;font-size:1.13rem}
+  .svc h3{font-family:"Montserrat",Arial,sans-serif;font-size:1.13rem}
   .svc p{margin:0;font-size:.92rem;color:var(--text-mute);line-height:1.55}
   .svc.is-finance{background:var(--stone-warm)}
 
@@ -240,38 +268,37 @@
   .section-wave.top{top:0;transform:translateY(-99%)}
   .section-wave.bottom{bottom:0;transform:translateY(99%) scaleX(-1)}
   /* ---------- interactive plan cards ---------- */
-  .plan-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.2rem}
+  .plan-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.2rem;align-items:start}
   @media (max-width:980px){.plan-cards{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:560px){.plan-cards{grid-template-columns:1fr}}
   .plan-card{
-    --tier:#8FBDB2;
-    background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.18);
-    border-radius:calc(var(--r) + 6px);overflow:hidden;
+    --tier:#8FBDB2;position:relative;
+    background:color-mix(in srgb, var(--tier) 20%, #1A3B36);
+    border:1.5px solid color-mix(in srgb, var(--tier) 45%, transparent);
+    border-radius:calc(var(--r) + 6px);
     transition:border-color .2s ease,background .2s ease;
   }
-  .plan-card[open]{border-color:var(--tier);background:color-mix(in srgb, var(--tier) 12%, rgba(255,255,255,.07))}
+  .plan-card[open]{border-color:var(--tier);background:color-mix(in srgb, var(--tier) 30%, #1A3B36)}
   .plan-card summary{
-    cursor:pointer;list-style:none;padding:1.2rem 1.3rem;position:relative;
+    cursor:pointer;list-style:none;padding:1.4rem 1.3rem 1.2rem;position:relative;
     display:flex;align-items:center;flex-wrap:wrap;gap:.4rem .6rem;
   }
   .plan-card summary::-webkit-details-marker{display:none}
-  .plan-card summary::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--tier)}
   .plan-card-name{
-    font-family:"Fraunces",Georgia,serif;font-size:1.02rem;color:#fff;
-    display:flex;align-items:center;gap:.5rem;
+    font-family:"Montserrat",Arial,sans-serif;font-size:1.02rem;font-weight:600;color:#fff;
   }
-  .plan-card-name::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--tier);flex-shrink:0}
   .plan-card-price{
-    font-family:"Fraunces",Georgia,serif;font-size:1.25rem;font-weight:700;color:#fff;
+    font-family:"Montserrat",Arial,sans-serif;font-size:1.25rem;font-weight:700;color:#fff;
     margin-left:auto;font-variant-numeric:tabular-nums;
   }
   .plan-card-price small{font-size:.68rem;font-weight:400;color:#AECCC4}
-  .plan-card-chevron{font-size:1.3rem;line-height:1;color:var(--tier);transition:transform .2s ease}
+  .plan-card-chevron{font-size:1.3rem;line-height:1;color:#fff;transition:transform .2s ease}
   .plan-card[open] .plan-card-chevron{transform:rotate(45deg)}
   .plan-card-badge{
-    position:absolute;top:-.55rem;right:1rem;
-    font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
-    background:var(--tier);color:#1C1606;padding:.2rem .5rem;border-radius:999px;
+    position:absolute;top:-.6rem;left:1.1rem;z-index:1;
+    font-size:.58rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+    background:#1C1606;color:var(--tier);padding:.25rem .55rem;border-radius:999px;
+    border:1px solid var(--tier);
   }
   .t-diamond{--tier:#A9C4E6}
   .t-gold{--tier:#D9A441}
@@ -285,7 +312,7 @@
   .plan-select{display:inline-block}
 
   .pending{
-    border:1.5px dashed rgba(255,255,255,.45);
+    border:0;border-left:3px solid var(--ember);
     background:rgba(0,0,0,.18);
     padding:.85rem 1.1rem;margin-top:1.5rem;
     font-size:.84rem;color:#D9E7E3;
@@ -306,7 +333,8 @@
   }
 
   /* ---------- social strip ---------- */
-  #social{background:var(--stone-warm)}
+  #social{background:var(--stone-warm);text-align:center}
+  #social .wrap{display:flex;flex-direction:column;align-items:center}
   .social-slot{
     margin-top:1.8rem;border:1.5px dashed var(--stone-line);background:var(--paper);
     padding:2.2rem 1.4rem;text-align:center;border-radius:var(--r);
@@ -353,7 +381,7 @@
   .contact-aside dl{margin:0;display:grid;gap:1.3rem}
   .contact-aside dt{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#9DC4BB;margin-bottom:.25rem}
   .contact-aside dd{margin:0;font-size:1.02rem;color:#EDE6DB}
-  .contact-aside dd a{font-family:"Fraunces",Georgia,serif;font-size:1.3rem;font-weight:600;color:#fff;text-decoration:none}
+  .contact-aside dd a{font-family:"Montserrat",Arial,sans-serif;font-size:1.3rem;font-weight:600;color:#fff;text-decoration:none}
 
   /* ---------- footer ---------- */
   footer{background:#0C0A09;color:#8B837A;font-size:.85rem}
@@ -362,14 +390,6 @@
     display:flex;gap:1.2rem;justify-content:space-between;flex-wrap:wrap;align-items:center;
   }
   footer a{color:#B9B0A4}
-  .draftnote{
-    background:#1A1613;color:#A79D91;font-size:.8rem;
-    border-top:1px solid rgba(255,255,255,.08);
-  }
-  .draftnote div{
-    max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut);padding-block:1rem;
-  }
-  .draftnote b{color:#E0D6C8}
 </style>
 
 <header class="topbar">
@@ -395,9 +415,9 @@
   </video>
   <div class="hero-veil" role="presentation"></div>
   <div class="hero-in">
-    <h1>Making Your Outdoor Oasis Dreams A Reality</h1>
-    <p class="hero-sub">A firefighter-owned and operated small business building custom pools, spas and
-      outdoor living across north and east Texas. Built on trust, integrity and exceptional craftsmanship.</p>
+    <h1>Making Your Outdoor Oasis Dreams <span class="accent">A Reality</span></h1>
+    <p class="hero-line1">Building custom pools, spas, and outdoor living across North and East Texas</p>
+    <p class="hero-line2"><span class="hero-line2-rule"></span>Built on trust, integrity, and exceptional craftsmanship</p>
     <div class="hero-cta">
       <a class="btn btn-solid" href="#contact">Start Your Project</a>
       <a class="btn btn-ghost" href="#maintenance">Pool Maintenance Plans</a>
@@ -427,6 +447,9 @@
 </div>
 
 <section id="pools" class="pad">
+  <div class="section-wave bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,60 C280,10 520,50 760,28 C1000,6 1220,46 1440,20 L1440,60 Z"/></svg>
+  </div>
   <div class="wrap">
     <div class="split">
       <div>
@@ -482,7 +505,15 @@
 
 <section id="maintenance" class="pad">
   <div class="section-wave top" aria-hidden="true">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,60 C280,10 520,50 760,28 C1000,6 1220,46 1440,20 L1440,60 Z" fill="var(--pool)"/></svg>
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="navyToPool" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#16314A"/>
+          <stop offset="1" stop-color="var(--pool)"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,60 C280,10 520,50 760,28 C1000,6 1220,46 1440,20 L1440,60 Z" fill="url(#navyToPool)"/>
+    </svg>
   </div>
   <div class="section-wave bottom" aria-hidden="true">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,60 C280,10 520,50 760,28 C1000,6 1220,46 1440,20 L1440,60 Z" fill="var(--pool)"/></svg>
@@ -556,7 +587,7 @@
     </div>
 
     <div class="pending">
-      <b>Good to know.</b> Salt cell cleans are an add-on. Sign up for weekly service, get a free filter clean.
+      <b>Note.</b> Salt cell cleans are an add-on. Sign up for weekly service, get a free filter clean.
     </div>
   </div>
 </section>
@@ -600,9 +631,8 @@
      the header with the follow button is the content that always shows. -->
 <section id="social" class="pad">
   <div class="wrap">
-    <p class="eyebrow">Follow Along</p>
+    <p class="eyebrow">Follow Us On Instagram</p>
     <h2><a href="https://www.instagram.com/firehousepoolstx/" target="_blank" rel="noopener noreferrer">@firehousepoolstx</a></h2>
-    <a class="btn btn-dark" href="https://www.instagram.com/firehousepoolstx/" target="_blank" rel="noopener noreferrer" style="margin-top:1.4rem;display:inline-block">Follow Us On Instagram</a>
     <div class="sk-instagram-feed" data-embed-id="25728456" style="margin-top:2rem"></div>
     <script src="https://widgets.sociablekit.com/instagram-feed/widget.js" defer></script>
   </div>
@@ -610,8 +640,7 @@
 
 <section id="contact" class="pad">
   <div class="wrap">
-    <p class="eyebrow on-dark">Get Started</p>
-    <h2>Tell us about your backyard</h2>
+    <h2 style="text-align:center">Tell us about your backyard!</h2>
     <div class="form-grid">
       <form id="leadForm" novalidate>
         <div class="row2">
@@ -713,7 +742,7 @@
           <dt>Call or text</dt>
           <dd><a href="tel:+19033402454">(903) 340-2454</a></dd>
           <dt>Service area</dt>
-          <dd>Based in Wills Point, Texas. We take projects all over, so distance is worth asking about.</dd>
+          <dd>Based in Wills Point, Texas. We take projects all over.</dd>
           <dt>Mail</dt>
           <dd>P.O. Box 442<br>Wills Point, TX 75169</dd>
           <dt>Hours</dt>
@@ -733,12 +762,6 @@
     </div>
   </div>
 </footer>
-
-<div class="draftnote">
-  <div><b>Draft preview for review.</b> One item is marked above and waiting on you: the Instagram
-    connection. The contact form collects and validates, and the JobTread connection behind it is
-    the next piece of work.</div>
-</div>
 
 <script>
   (function(){
