@@ -157,20 +157,23 @@
   .btn-dark:hover,.btn-dark:focus-visible{background:#163B36}
 
   /* ---------- credentials strip ---------- */
-  .creds{background:var(--ink-soft);color:#EDE6DB}
+  .creds{background:var(--ink-soft);color:#EDE6DB;overflow:hidden}
+  .creds-track{display:flex;width:max-content;animation:credsMarquee 26s linear infinite}
+  .creds:hover .creds-track{animation-play-state:paused}
   .creds-in{
-    max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut);
-    padding-block:1.5rem;
-    display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;
+    display:flex;align-items:center;gap:clamp(1.4rem,4vw,2.6rem);
+    padding-block:1.5rem;padding-inline:clamp(1.4rem,4vw,2.6rem);
+    flex-shrink:0;
   }
+  .cred{white-space:nowrap}
   .cred span{
     display:block;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
     color:#9DC4BB;margin-bottom:.3rem;
   }
   .cred strong{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.05rem;display:block;line-height:1.3}
-  @media (max-width:640px){
-    .creds-in{grid-template-columns:1fr;gap:1rem}
-  }
+  .cred-dot{width:5px;height:5px;border-radius:50%;background:var(--ember);flex-shrink:0}
+  @keyframes credsMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.creds-track{animation:none}}
 
   /* ---------- generic section ---------- */
   section{scroll-margin-top:84px}
@@ -236,59 +239,50 @@
   .section-wave svg{display:block;width:100%;height:100%}
   .section-wave.top{top:0;transform:translateY(-99%)}
   .section-wave.bottom{bottom:0;transform:translateY(99%) scaleX(-1)}
-  /* ---------- interactive plan picker ---------- */
-  .plan-picker{margin-top:2.2rem}
-  .plan-tab-input{
-    position:absolute;opacity:0;pointer-events:none;
-    width:1px;height:1px;padding:0;margin:0;border:0;background:none;
+  /* ---------- interactive plan cards ---------- */
+  .plan-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.2rem}
+  @media (max-width:980px){.plan-cards{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.plan-cards{grid-template-columns:1fr}}
+  .plan-card{
+    --tier:#8FBDB2;
+    background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.18);
+    border-radius:calc(var(--r) + 6px);overflow:hidden;
+    transition:border-color .2s ease,background .2s ease;
   }
-  .plan-tabs{display:flex;flex-wrap:wrap;gap:.6rem}
-  .plan-tab{
-    --tier: #8FBDB2;
-    cursor:pointer;padding:.8rem 1.3rem;border-radius:999px;
-    background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.22);
-    font-family:"Fraunces",Georgia,serif;font-size:1rem;color:#F2EFE8;
+  .plan-card[open]{border-color:var(--tier);background:color-mix(in srgb, var(--tier) 12%, rgba(255,255,255,.07))}
+  .plan-card summary{
+    cursor:pointer;list-style:none;padding:1.2rem 1.3rem;position:relative;
+    display:flex;align-items:center;flex-wrap:wrap;gap:.4rem .6rem;
+  }
+  .plan-card summary::-webkit-details-marker{display:none}
+  .plan-card summary::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--tier)}
+  .plan-card-name{
+    font-family:"Fraunces",Georgia,serif;font-size:1.02rem;color:#fff;
     display:flex;align-items:center;gap:.5rem;
-    transition:background .2s ease,border-color .2s ease,transform .2s ease;
   }
-  .plan-tab::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--tier)}
-  .plan-tab:hover{transform:translateY(-2px);border-color:var(--tier)}
-  .plan-tab .plan-tab-badge{
-    font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  .plan-card-name::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--tier);flex-shrink:0}
+  .plan-card-price{
+    font-family:"Fraunces",Georgia,serif;font-size:1.25rem;font-weight:700;color:#fff;
+    margin-left:auto;font-variant-numeric:tabular-nums;
+  }
+  .plan-card-price small{font-size:.68rem;font-weight:400;color:#AECCC4}
+  .plan-card-chevron{font-size:1.3rem;line-height:1;color:var(--tier);transition:transform .2s ease}
+  .plan-card[open] .plan-card-chevron{transform:rotate(45deg)}
+  .plan-card-badge{
+    position:absolute;top:-.55rem;right:1rem;
+    font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
     background:var(--tier);color:#1C1606;padding:.2rem .5rem;border-radius:999px;
   }
   .t-diamond{--tier:#A9C4E6}
   .t-gold{--tier:#D9A441}
   .t-silver{--tier:#B9C2BD}
   .t-bronze{--tier:#C97B4A}
-  #tabDiamond:checked ~ .plan-tabs .t-diamond,
-  #tabGold:checked ~ .plan-tabs .t-gold,
-  #tabSilver:checked ~ .plan-tabs .t-silver,
-  #tabBronze:checked ~ .plan-tabs .t-bronze{
-    background:color-mix(in srgb, var(--tier) 22%, transparent);border-color:var(--tier);
-  }
-  .plan-panels{margin-top:1.6rem}
-  .plan-panel{
-    display:none;background:rgba(255,255,255,.06);border-radius:calc(var(--r) + 8px);
-    padding:clamp(1.6rem,4vw,2.4rem);
-    grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start;
-  }
-  #tabDiamond:checked ~ .plan-panels .p-diamond,
-  #tabGold:checked ~ .plan-panels .p-gold,
-  #tabSilver:checked ~ .plan-panels .p-silver,
-  #tabBronze:checked ~ .plan-panels .p-bronze{display:grid}
-  @media (max-width:760px){.plan-panel{grid-template-columns:1fr}}
-  .plan-panel-head .price{
-    font-family:"Fraunces",Georgia,serif;font-size:2.1rem;font-weight:700;color:#fff;
-    line-height:1;margin-top:.4rem;font-variant-numeric:tabular-nums;
-  }
-  .plan-panel-head .price small{font-size:.85rem;font-weight:400;color:#AECCC4}
-  .plan-panel-head h3{color:#fff;font-family:"Fraunces",Georgia,serif;font-size:1.4rem}
-  .plan-panel-head p{color:#CBDED9;margin:.6rem 0 0;max-width:40ch}
-  .plan-panel ul{list-style:none;margin:0 0 1.3rem;padding:0;display:grid;gap:.5rem}
-  .plan-panel li{font-size:.92rem;color:#E6EFEC;line-height:1.4;padding-left:1.2rem;position:relative}
-  .plan-panel li::before{content:"✓";position:absolute;left:0;color:#8FBDB2;font-weight:700}
-  .plan-select{align-self:start}
+  .plan-card-body{padding:0 1.3rem 1.3rem}
+  .plan-card-body p{color:#CBDED9;margin:0 0 1rem;font-size:.88rem;line-height:1.5}
+  .plan-card-body ul{list-style:none;margin:0 0 1.1rem;padding:0;display:grid;gap:.5rem}
+  .plan-card-body li{font-size:.87rem;color:#E6EFEC;line-height:1.4;padding-left:1.2rem;position:relative}
+  .plan-card-body li::before{content:"✓";position:absolute;left:0;color:var(--tier);font-weight:700}
+  .plan-select{display:inline-block}
 
   .pending{
     border:1.5px dashed rgba(255,255,255,.45);
@@ -300,7 +294,7 @@
   .pending b{color:#fff;font-weight:600}
 
   /* ---------- gallery ---------- */
-  .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:2.4rem}
+  .gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-flow:dense;gap:10px;margin-top:2.4rem}
   .gal figure{margin:0;overflow:hidden;border-radius:var(--r)}
   .gal img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .5s ease}
   .gal figure:hover img{transform:scale(1.05)}
@@ -412,10 +406,23 @@
 </div>
 
 <div class="creds">
-  <div class="creds-in">
-    <div class="cred"><span>Who we are</span><strong>Firefighter owned &amp; family run</strong></div>
-    <div class="cred"><span>Experience</span><strong>15+ years in the pool industry</strong></div>
-    <div class="cred"><span>Where we build</span><strong>Based in Wills Point, we travel to you</strong></div>
+  <div class="creds-track">
+    <div class="creds-in" aria-hidden="false">
+      <div class="cred"><span>Who we are</span><strong>Firefighter owned &amp; family run</strong></div>
+      <div class="cred-dot"></div>
+      <div class="cred"><span>Experience</span><strong>15+ years in the pool industry</strong></div>
+      <div class="cred-dot"></div>
+      <div class="cred"><span>Where we build</span><strong>Based in Wills Point, we travel to you</strong></div>
+      <div class="cred-dot"></div>
+    </div>
+    <div class="creds-in" aria-hidden="true">
+      <div class="cred"><span>Who we are</span><strong>Firefighter owned &amp; family run</strong></div>
+      <div class="cred-dot"></div>
+      <div class="cred"><span>Experience</span><strong>15+ years in the pool industry</strong></div>
+      <div class="cred-dot"></div>
+      <div class="cred"><span>Where we build</span><strong>Based in Wills Point, we travel to you</strong></div>
+      <div class="cred-dot"></div>
+    </div>
   </div>
 </div>
 
@@ -424,9 +431,9 @@
     <div class="split">
       <div>
         <p class="eyebrow">Custom Pools &amp; Spas</p>
-        <h2>Pools built the way you would build your own</h2>
-        <p class="lede">Sleek and modern, or a natural oasis wrapped in lush greenery. Every project is
-          custom and quoted by our team, with transparency at every step of the process.</p>
+        <h2>Custom pools and spas</h2>
+        <p class="lede">Every project is custom and quoted by our team, with transparency at every step
+          of the process.</p>
         <ul class="featlist">
           <li><b>Water features.</b> Sheer descents, spillways, fountains and waterfalls</li>
           <li><b>Fire elements.</b> Fire bowls, fire walls and flame features paired with water</li>
@@ -434,7 +441,7 @@
           <li><b>Pool automation.</b> Lighting, circulation, heating and features from your smartphone or tablet</li>
         </ul>
       </div>
-      <figure><img src="img/pool-modern-spa-shelf.jpg" alt="Modern custom pool with raised tile spa and tanning shelf"></figure>
+      <figure><img src="img/hardyrd-041.jpg" alt="Crystal clear, well maintained custom pool water"></figure>
     </div>
   </div>
 </section>
@@ -450,7 +457,7 @@
         <div class="svc-body"><span class="num">01</span><h3>Custom Pools</h3><p>In-ground pools and spas, typically built together as one project.</p></div>
       </div>
       <div class="svc">
-        <figure class="svc-photo"><img src="img/hardyrd-041.jpg" alt="Crystal clear, well maintained pool water"></figure>
+        <figure class="svc-photo"><img src="img/pool-modern-spa-shelf.jpg" alt="Modern pool with raised tile spa, well maintained"></figure>
         <div class="svc-body"><span class="num">02</span><h3>Pool Service &amp; Maintenance</h3><p>Customized service plans tailored to your property and lifestyle.</p></div>
       </div>
       <div class="svc">
@@ -481,82 +488,71 @@
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,60 C280,10 520,50 760,28 C1000,6 1220,46 1440,20 L1440,60 Z" fill="var(--pool)"/></svg>
   </div>
   <div class="wrap">
-    <p class="eyebrow on-dark">Pool Service &amp; Maintenance</p>
-    <h2>We keep pools running, not just build them</h2>
+    <h2>Pool service and maintenance</h2>
     <p class="lede">Pick the level of care your pool needs.</p>
 
-    <div class="plan-picker">
-      <input type="radio" name="planTab" id="tabDiamond" class="plan-tab-input" checked>
-      <input type="radio" name="planTab" id="tabGold" class="plan-tab-input">
-      <input type="radio" name="planTab" id="tabSilver" class="plan-tab-input">
-      <input type="radio" name="planTab" id="tabBronze" class="plan-tab-input">
-
-      <div class="plan-tabs">
-        <label for="tabDiamond" class="plan-tab t-diamond">Diamond</label>
-        <label for="tabGold" class="plan-tab t-gold">Gold <span class="plan-tab-badge">Popular</span></label>
-        <label for="tabSilver" class="plan-tab t-silver">Silver</label>
-        <label for="tabBronze" class="plan-tab t-bronze">Bronze</label>
-      </div>
-
-      <div class="plan-panels">
-        <div class="plan-panel p-diamond">
-          <div class="plan-panel-head">
-            <h3>Diamond Plan</h3>
-            <div class="price">$300<small> / month + tax</small></div>
-            <p>Completely hands-off. Everything included, filter cleans every 6 months.</p>
-          </div>
-          <div>
-            <ul>
-              <li>Vacuuming, skimming and brushing as needed</li>
-              <li>Water testing, chemicals and free algae treatments</li>
-              <li>Filter clean every 6 months</li>
-            </ul>
-            <a href="#contact" class="btn btn-solid plan-select" data-plan="Diamond Plan">Select Diamond Plan</a>
-          </div>
+    <div class="plan-cards">
+      <details class="plan-card t-diamond">
+        <summary>
+          <span class="plan-card-name">Diamond</span>
+          <span class="plan-card-price">$300<small>/mo</small></span>
+          <span class="plan-card-chevron" aria-hidden="true">+</span>
+        </summary>
+        <div class="plan-card-body">
+          <p>Completely hands-off. Everything included, filter cleans every 6 months.</p>
+          <ul>
+            <li>Vacuuming, skimming and brushing as needed</li>
+            <li>Water testing, chemicals and free algae treatments</li>
+            <li>Filter clean every 6 months</li>
+          </ul>
+          <a href="#contact" class="btn btn-solid plan-select" data-plan="Diamond Plan">Select Diamond Plan</a>
         </div>
-        <div class="plan-panel p-gold">
-          <div class="plan-panel-head">
-            <h3>Gold Plan</h3>
-            <div class="price">$250<small> / month + tax</small></div>
-            <p>Our most popular choice. All the essentials for a clean, safe pool.</p>
-          </div>
-          <div>
-            <ul>
-              <li>Vacuuming, skimming and brushing as needed</li>
-              <li>Water testing, chemicals and free algae treatments</li>
-            </ul>
-            <a href="#contact" class="btn btn-solid plan-select" data-plan="Gold Plan">Select Gold Plan</a>
-          </div>
+      </details>
+      <details class="plan-card t-gold">
+        <summary>
+          <span class="plan-card-name">Gold <span class="plan-card-badge">Popular</span></span>
+          <span class="plan-card-price">$250<small>/mo</small></span>
+          <span class="plan-card-chevron" aria-hidden="true">+</span>
+        </summary>
+        <div class="plan-card-body">
+          <p>Our most popular choice. All the essentials for a clean, safe pool.</p>
+          <ul>
+            <li>Vacuuming, skimming and brushing as needed</li>
+            <li>Water testing, chemicals and free algae treatments</li>
+          </ul>
+          <a href="#contact" class="btn btn-solid plan-select" data-plan="Gold Plan">Select Gold Plan</a>
         </div>
-        <div class="plan-panel p-silver">
-          <div class="plan-panel-head">
-            <h3>Silver Plan</h3>
-            <div class="price">$225<small> / month + tax</small></div>
-            <p>Reliable weekly care without the extras.</p>
-          </div>
-          <div>
-            <ul>
-              <li>Skim and net surface, empty baskets</li>
-              <li>Water testing and chemicals included</li>
-            </ul>
-            <a href="#contact" class="btn btn-solid plan-select" data-plan="Silver Plan">Select Silver Plan</a>
-          </div>
+      </details>
+      <details class="plan-card t-silver">
+        <summary>
+          <span class="plan-card-name">Silver</span>
+          <span class="plan-card-price">$225<small>/mo</small></span>
+          <span class="plan-card-chevron" aria-hidden="true">+</span>
+        </summary>
+        <div class="plan-card-body">
+          <p>Reliable weekly care without the extras.</p>
+          <ul>
+            <li>Skim and net surface, empty baskets</li>
+            <li>Water testing and chemicals included</li>
+          </ul>
+          <a href="#contact" class="btn btn-solid plan-select" data-plan="Silver Plan">Select Silver Plan</a>
         </div>
-        <div class="plan-panel p-bronze">
-          <div class="plan-panel-head">
-            <h3>Bronze Plan</h3>
-            <div class="price">$200<small> / month + tax</small></div>
-            <p>For DIY pool owners who handle the rest themselves.</p>
-          </div>
-          <div>
-            <ul>
-              <li>Water testing and chemicals</li>
-              <li>Empty pump and skimmer baskets</li>
-            </ul>
-            <a href="#contact" class="btn btn-solid plan-select" data-plan="Bronze Plan">Select Bronze Plan</a>
-          </div>
+      </details>
+      <details class="plan-card t-bronze">
+        <summary>
+          <span class="plan-card-name">Bronze</span>
+          <span class="plan-card-price">$200<small>/mo</small></span>
+          <span class="plan-card-chevron" aria-hidden="true">+</span>
+        </summary>
+        <div class="plan-card-body">
+          <p>For DIY pool owners who handle the rest themselves.</p>
+          <ul>
+            <li>Water testing and chemicals</li>
+            <li>Empty pump and skimmer baskets</li>
+          </ul>
+          <a href="#contact" class="btn btn-solid plan-select" data-plan="Bronze Plan">Select Bronze Plan</a>
         </div>
-      </div>
+      </details>
     </div>
 
     <div class="pending">
@@ -571,21 +567,21 @@
     <h2>Recent projects, north and east Texas</h2>
     <div class="gal">
       <figure class="tall"><img src="img/hardyrd-089.jpg" alt="Lakeside fire pit and built-in seating, Hardy Rd project"></figure>
-      <figure><img src="img/Firehouse-Pools-6.jpg" alt="Completed pool with spa and water feature"></figure>
+      <figure class="tall"><img src="img/Firehouse-Pools-6.jpg" alt="Aerial view of a completed pool with spa and water feature"></figure>
       <figure><img src="img/Water-Feature.jpg" alt="Water feature detail with sheer descent"></figure>
       <figure><img src="img/hardyrd-041.jpg" alt="Patio and outdoor living area"></figure>
       <figure><img src="img/POVupdates-12.jpg" alt="Pool under construction"></figure>
       <figure><img src="img/2208POV-24.jpg" alt="Finished pool deck and coping"></figure>
       <figure><img src="img/Firehouse-Pools-5.jpg" alt="Custom pool with integrated lighting"></figure>
       <figure><img src="img/hardyrd-096.jpg" alt="Outdoor kitchen and seating"></figure>
-      <figure class="tall"><img src="img/pool-lagoon-waterfall.jpg" alt="Lagoon-style pool with natural stone waterfall and slide"></figure>
+      <figure><img src="img/pool-lagoon-waterfall.jpg" alt="Lagoon-style pool with natural stone waterfall and slide"></figure>
       <figure><img src="img/pool-fountain-spa.jpg" alt="Pool and raised spa with landscaped backyard"></figure>
       <figure><img src="img/pool-aerial-modern.jpg" alt="Aerial view of a modern rectangular pool between two structures"></figure>
       <figure><img src="img/pool-lakeside-wide.jpg" alt="Wide shot of a lakeside custom pool"></figure>
       <figure><img src="img/pool-slide-estate.jpg" alt="Estate pool with spa and water slide"></figure>
       <figure><img src="img/pool-modern-spa-shelf.jpg" alt="Modern pool with raised tile spa and tanning shelf"></figure>
       <figure><img src="img/pool-kidney-slide.jpg" alt="Kidney-shaped pool with rock slide"></figure>
-      <figure><img src="img/pool-spa-landscaped.jpg" alt="Pool and spa surrounded by mature landscaping"></figure>
+      <figure class="tall"><img src="img/pool-spa-landscaped.jpg" alt="Pool and spa surrounded by mature landscaping"></figure>
       <figure><img src="img/pool-lagoon-goldenhour.jpg" alt="Lagoon pool at golden hour with sunlight through trees"></figure>
       <figure><img src="img/build-shotcrete-crew.jpg" alt="Crew applying shotcrete to a new pool shell"></figure>
       <figure><img src="img/build-concrete-pour.jpg" alt="Concrete deck pour in progress"></figure>
@@ -773,8 +769,14 @@
             if(opt.text.indexOf('maintenance') !== -1) opt.selected = true;
           });
         }
-        if(notes && !notes.value){
-          notes.value = "I'm interested in the " + plan + ".";
+        if(notes){
+          var sentence = "I'm interested in the " + plan + ".";
+          var planLinePattern = /^I'm interested in the .+ Plan\.$/;
+          if(!notes.value || planLinePattern.test(notes.value.trim())){
+            notes.value = sentence;
+          } else {
+            notes.value = notes.value.replace(/\s*$/, '') + ' ' + sentence;
+          }
         }
       });
     });
