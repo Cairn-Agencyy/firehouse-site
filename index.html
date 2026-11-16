@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <title>Firehouse Pools | Custom Pool Builder, North &amp; East Texas</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="css/style.css">
 
 <header class="topbar">
@@ -92,7 +92,15 @@
 
 <section id="pools" class="pad">
   <div class="section-wave bottom" aria-hidden="true">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,60 C280,10 520,50 760,28 C1000,6 1220,46 1440,20 L1440,60 Z"/></svg>
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="navyToPaper" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#16314A"/>
+          <stop offset="1" stop-color="var(--paper)"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,60 C280,10 520,50 760,28 C1000,6 1220,46 1440,20 L1440,60 Z" fill="url(#navyToPaper)"/>
+    </svg>
   </div>
   <div class="wrap">
     <div class="split">
@@ -171,7 +179,15 @@
     </svg>
   </div>
   <div class="section-wave bottom" aria-hidden="true">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,60 C280,10 520,50 760,28 C1000,6 1220,46 1440,20 L1440,60 Z" fill="var(--pool)"/></svg>
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="poolToStone" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="var(--pool)"/>
+          <stop offset="1" stop-color="var(--stone)"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,60 C280,10 520,50 760,28 C1000,6 1220,46 1440,20 L1440,60 Z" fill="url(#poolToStone)"/>
+    </svg>
   </div>
   <div class="wrap">
     <h2>Pool service and maintenance</h2>
@@ -284,12 +300,38 @@
   </div>
 </section>
 
+<!-- Google Reviews Section. Placeholder pending Micaela's Google Business
+     Place ID / review widget embed code (she said she'd send it over).
+     Swap the dashed box below for the real widget once that arrives --
+     do not fabricate review content, star counts, or quotes in the
+     meantime. -->
+<section id="reviews" class="pad">
+  <div class="wrap">
+    <p class="eyebrow">What Our Clients Say</p>
+    <h2>Google Reviews</h2>
+    <div class="social-slot">
+      <p>Real client reviews from Google will display here once connected.</p>
+    </div>
+  </div>
+</section>
+
 <!-- Instagram Feed Section. SociableKIT Instagram Profile widget on Cairn's
      account, embed 25728456, pulling the public @firehousepoolstx feed.
      Same vendor and pattern as Gleam Clean's. It may not paint off the
      production domain until that domain is registered on the widget;
      the header with the follow button is the content that always shows. -->
 <section id="social" class="pad">
+  <div class="section-wave top" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="stoneToStoneWarm" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="var(--stone)"/>
+          <stop offset="1" stop-color="var(--stone-warm)"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,60 C280,10 520,50 760,28 C1000,6 1220,46 1440,20 L1440,60 Z" fill="url(#stoneToStoneWarm)"/>
+    </svg>
+  </div>
   <div class="wrap">
     <p class="eyebrow">Follow Us On Instagram</p>
     <h2><a href="https://www.instagram.com/firehousepoolstx/" target="_blank" rel="noopener noreferrer">@firehousepoolstx</a></h2>
