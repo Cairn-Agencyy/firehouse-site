@@ -24,8 +24,8 @@
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{
     margin:0;
-    background:var(--stone);
-    color:var(--text);
+    background:var(--ink-soft);
+    color:#EDE6DB;
     font-family:"Inter","Helvetica Neue",Arial,sans-serif;
     font-size:17px;
     line-height:1.65;
@@ -287,7 +287,7 @@
   /* ---------- generic section ---------- */
   section{scroll-margin-top:84px}
   .pad{padding-block:clamp(4.5rem,10vw,7.5rem)}
-  .lede{font-size:1.1rem;max-width:62ch;color:var(--text-mute);margin:1.1rem 0 0}
+  .lede{font-size:1.1rem;max-width:62ch;color:#C9C1B4;margin:1.1rem 0 0}
 
   /* ---------- feature split ---------- */
   .split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center}
@@ -328,9 +328,12 @@
 
   /* ---------- services ---------- */
   #services{
-    background:linear-gradient(180deg, #16314A 0, var(--paper) 110px);
-    padding-top:clamp(9.5rem,15vw,13rem);
+    background:#16314A;
+    color:#EDE6DB;
   }
+  #services .eyebrow:not(.eyebrow-lg){color:#9DC4BB}
+  #services .eyebrow-lg{color:#9DC4BB}
+  #services .lede{color:#C9C1B4}
   .svc-grid{
     display:grid;grid-template-columns:repeat(3,1fr);
     gap:1.1rem;margin-top:2.4rem;
@@ -355,7 +358,7 @@
   .svc-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;filter:brightness(1.12) saturate(1.15) contrast(1.04)}
   .svc:hover .svc-photo img{transform:scale(1.1)}
   .svc:not(:has(.svc-photo)) .svc-body{padding-top:1.8rem}
-  .svc h3{font-family:"Inter",Arial,sans-serif;font-size:1.13rem}
+  .svc h3{font-family:"Inter",Arial,sans-serif;font-size:1.13rem;color:var(--text)}
   .svc p{margin:0;font-size:.92rem;color:var(--text-mute);line-height:1.55}
   .svc-cta{
     display:inline-flex;align-items:center;gap:.4rem;margin-top:.3rem;
@@ -370,7 +373,7 @@
 
   /* ---------- maintenance ---------- */
   #maintenance{
-    background:linear-gradient(180deg, var(--paper) 0, var(--pool) 130px);
+    background:linear-gradient(180deg, #16314A 0, var(--pool) 130px);
     color:#F2EFE8;position:relative;
   }
   .page-banner + #maintenance{
@@ -379,7 +382,8 @@
   #maintenance h2{color:#fff}
   #maintenance .lede{color:#CBDED9}
 
-  #projects{background:linear-gradient(180deg, var(--pool) 0, var(--stone) 120px)}
+  #projects{background:linear-gradient(180deg, var(--pool) 0%, var(--ink-soft) 100%);color:#EDE6DB}
+  #projects .eyebrow{color:#9DC4BB}
 
   /* ---------- interactive plan cards ---------- */
   .plan-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.2rem;align-items:start}
@@ -470,7 +474,8 @@
   }
 
   /* ---------- social strip ---------- */
-  #social{background:var(--stone-warm);text-align:center;position:relative}
+  #social{background:var(--ink-soft);color:#EDE6DB;text-align:center;position:relative}
+  #social .eyebrow{color:#9DC4BB}
   #social .wrap{display:flex;flex-direction:column;align-items:center}
   .social-slot{
     margin-top:1.8rem;border:1.5px dashed var(--stone-line);background:var(--paper);
@@ -486,7 +491,7 @@
   .social-slot p{margin:0;font-size:.88rem;color:var(--text-mute);max-width:52ch;margin-inline:auto}
 
   /* ---------- contact ---------- */
-  #contact{background:linear-gradient(180deg, var(--stone-warm) 0, var(--ink) 130px);color:#EDE6DB;position:relative}
+  #contact{background:linear-gradient(180deg, var(--ink-soft) 0, var(--ink) 130px);color:#EDE6DB;position:relative}
   #contact h2{color:#fff}
   .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:start;margin-top:2.4rem}
   @media (max-width:860px){.form-grid{grid-template-columns:1fr}}
@@ -532,7 +537,7 @@
     font-family:"Inter",Arial,sans-serif;font-weight:800;font-size:1.6rem;
     color:var(--pool);opacity:.35;display:block;margin-bottom:.4rem;
   }
-  .step h3{margin-bottom:.5rem}
+  .step h3{margin-bottom:.5rem;color:var(--text)}
   .step p{margin:0;font-size:.9rem;color:var(--text-mute);line-height:1.55}
 
   /* ---------- resource / vendor grid ---------- */
@@ -546,7 +551,7 @@
     transition:box-shadow .2s ease,transform .2s ease;
   }
   .resource-card:hover{box-shadow:0 12px 26px rgba(20,17,15,.12);transform:translateY(-3px)}
-  .resource-card span{font-family:"Inter",Arial,sans-serif;font-weight:700;font-size:1.02rem}
+  .resource-card span{font-family:"Inter",Arial,sans-serif;font-weight:700;font-size:1.02rem;color:var(--text)}
   .resource-card .arrow{font-size:1.1rem;color:var(--pool);flex-shrink:0}
 
   /* ---------- financing ---------- */
