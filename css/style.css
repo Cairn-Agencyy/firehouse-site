@@ -219,6 +219,7 @@
     background:linear-gradient(180deg,rgba(20,17,15,.74) 0%,rgba(20,17,15,.4) 45%,rgba(20,17,15,.84) 100%);
   }
   .page-banner .wrap{position:relative}
+  .page-banner .split figure img{box-shadow:0 20px 50px rgba(0,0,0,.35)}
   .page-banner .eyebrow{color:#9DC4BB}
   .page-banner h1{
     font-size:clamp(2.1rem,4.8vw,3.3rem);max-width:22ch;font-weight:800;
@@ -232,7 +233,7 @@
 
   /* ---------- dark intro section right after a page banner ---------- */
   .page-banner + section{
-    background:linear-gradient(180deg, var(--ink-soft) 0%, var(--navy) 55%, #16314A 100%);
+    background:linear-gradient(180deg, var(--ink-soft) 0%, var(--navy) 50%, var(--ink-soft) 100%);
     color:#EDE6DB;position:relative;
   }
   .page-banner + section .eyebrow{color:#9DC4BB}
@@ -331,6 +332,9 @@
     background:#16314A;
     color:#EDE6DB;
   }
+  .page-banner + #services{
+    background:linear-gradient(180deg, var(--ink-soft) 0%, var(--navy) 50%, #16314A 100%);
+  }
   #services .eyebrow:not(.eyebrow-lg){color:#9DC4BB}
   #services .eyebrow-lg{color:#9DC4BB}
   #services .lede{color:#C9C1B4}
@@ -383,6 +387,9 @@
   #maintenance .lede{color:#CBDED9}
 
   #projects{background:linear-gradient(180deg, var(--pool) 0%, var(--ink-soft) 100%);color:#EDE6DB}
+  .page-banner + #projects{
+    background:linear-gradient(180deg, var(--ink-soft) 0%, var(--navy) 50%, var(--ink-soft) 100%);
+  }
   #projects .eyebrow{color:#9DC4BB}
 
   /* ---------- interactive plan cards ---------- */
