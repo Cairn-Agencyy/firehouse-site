@@ -301,6 +301,7 @@
   #pools .featlist li{
     background:rgba(255,255,255,.07);color:#EDE6DB;box-shadow:none;
     border:1px solid rgba(255,255,255,.12);
+    font-size:1.05rem;
   }
   #pools .featlist li:hover{background:rgba(255,255,255,.12);box-shadow:0 10px 24px rgba(0,0,0,.3)}
   #pools .featlist li::before{background:#8FBDB2}
