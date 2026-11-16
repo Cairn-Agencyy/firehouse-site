@@ -26,7 +26,7 @@
     margin:0;
     background:var(--stone);
     color:var(--text);
-    font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
+    font-family:"Inter","Helvetica Neue",Arial,sans-serif;
     font-size:17px;
     line-height:1.65;
     -webkit-font-smoothing:antialiased;
@@ -38,7 +38,7 @@
   .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
 
   h1,h2,h3{
-    font-family:"Montserrat",Arial,sans-serif;
+    font-family:"Inter",Arial,sans-serif;
     font-weight:700;
     line-height:1.12;
     text-wrap:balance;
@@ -49,7 +49,7 @@
   h3{font-size:1.2rem;letter-spacing:0}
 
   .eyebrow{
-    font-family:"Archivo",sans-serif;
+    font-family:"Inter",sans-serif;
     font-size:.72rem;
     font-weight:600;
     letter-spacing:.17em;
@@ -84,7 +84,7 @@
   nav > a:hover,nav > a:focus-visible{color:#fff;border-bottom-color:var(--ember)}
   nav > a[aria-current="page"]{color:#fff;border-bottom-color:var(--ember)}
   .tel{
-    font-family:"Montserrat",Arial,sans-serif;font-size:1.02rem;font-weight:600;
+    font-family:"Inter",Arial,sans-serif;font-size:1.02rem;font-weight:600;
     color:#fff;text-decoration:none;white-space:nowrap;
   }
   .nav-toggle{
@@ -230,7 +230,7 @@
   .page-banner .banner-wave svg path{fill:#2A2521}
 
   .btn{
-    display:inline-block;font-family:"Archivo",sans-serif;
+    display:inline-block;font-family:"Inter",sans-serif;
     font-size:.86rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
     padding:.95rem 1.7rem;text-decoration:none;border:1.5px solid transparent;
     border-radius:var(--r);
@@ -255,14 +255,14 @@
   }
   .cred{white-space:nowrap}
   .cred span{
-    display:block;font-family:"Montserrat",Arial,sans-serif;font-size:.68rem;
+    display:block;font-family:"Inter",Arial,sans-serif;font-size:.68rem;
     letter-spacing:.17em;text-transform:uppercase;font-weight:600;
     margin-bottom:.3rem;
   }
   .c-who span{color:#E8926B}
   .c-exp span{color:#8FBDB2}
   .c-build span{color:#A9C4E6}
-  .cred strong{font-family:"Montserrat",Arial,sans-serif;font-weight:600;font-size:1.05rem;display:block;line-height:1.3}
+  .cred strong{font-family:"Inter",Arial,sans-serif;font-weight:600;font-size:1.05rem;display:block;line-height:1.3}
   .cred-dot{width:1px;height:22px;background:rgba(255,255,255,.18);flex-shrink:0}
   @keyframes credsMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   @media (prefers-reduced-motion:reduce){.creds-track{animation:none}}
@@ -307,7 +307,6 @@
   #pools .featlist li::before{background:#8FBDB2}
   #pools .featlist li b{color:#fff}
   #pools .split figure img{box-shadow:0 20px 50px rgba(0,0,0,.35)}
-  #pools .section-wave.bottom svg path{fill:#16314A}
   .featlist li b{font-weight:600;display:block}
 
   /* ---------- services ---------- */
@@ -336,7 +335,7 @@
     font-size:.7rem;font-weight:600;letter-spacing:.14em;color:var(--text-mute);
     font-variant-numeric:tabular-nums;
   }
-  .svc h3{font-family:"Montserrat",Arial,sans-serif;font-size:1.13rem}
+  .svc h3{font-family:"Inter",Arial,sans-serif;font-size:1.13rem}
   .svc p{margin:0;font-size:.92rem;color:var(--text-mute);line-height:1.55}
   .svc.is-finance{background:var(--stone-warm)}
 
@@ -372,14 +371,14 @@
     content:"";position:absolute;top:-60%;left:-25%;width:35%;height:220%;
     background:linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
     transform:rotate(18deg);
-    animation:planCardShine 5s ease-in-out infinite;
+    animation:planCardShine 6.4s ease-in-out infinite;
   }
-  .t-gold .plan-card-shine::before{animation-delay:.6s}
-  .t-silver .plan-card-shine::before{animation-delay:1.2s}
-  .t-bronze .plan-card-shine::before{animation-delay:1.8s}
+  .t-gold .plan-card-shine::before{animation-delay:1.6s}
+  .t-silver .plan-card-shine::before{animation-delay:3.2s}
+  .t-bronze .plan-card-shine::before{animation-delay:4.8s}
   @keyframes planCardShine{
     0%{left:-25%}
-    30%{left:125%}
+    35%{left:125%}
     100%{left:125%}
   }
   @media (prefers-reduced-motion:reduce){.plan-card-shine::before{animation:none;display:none}}
@@ -389,10 +388,10 @@
   }
   .plan-card summary::-webkit-details-marker{display:none}
   .plan-card-name{
-    font-family:"Montserrat",Arial,sans-serif;font-size:1.1rem;font-weight:700;color:#fff;
+    font-family:"Inter",Arial,sans-serif;font-size:1.1rem;font-weight:700;color:#fff;
   }
   .plan-card-price{
-    font-family:"Montserrat",Arial,sans-serif;font-size:1.9rem;font-weight:800;color:#fff;
+    font-family:"Inter",Arial,sans-serif;font-size:1.9rem;font-weight:800;color:#fff;
     font-variant-numeric:tabular-nums;margin-top:.1rem;
   }
   .plan-card-price small{font-size:.72rem;font-weight:400;color:#F2EFE8;opacity:.8}
@@ -440,7 +439,7 @@
   }
 
   /* ---------- social strip ---------- */
-  #social{background:var(--stone-warm);text-align:center}
+  #social{background:var(--stone-warm);text-align:center;position:relative}
   #social .wrap{display:flex;flex-direction:column;align-items:center}
   .social-slot{
     margin-top:1.8rem;border:1.5px dashed var(--stone-line);background:var(--paper);
@@ -488,7 +487,7 @@
   .contact-aside dl{margin:0;display:grid;gap:1.3rem}
   .contact-aside dt{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#9DC4BB;margin-bottom:.25rem}
   .contact-aside dd{margin:0;font-size:1.02rem;color:#EDE6DB}
-  .contact-aside dd a{font-family:"Montserrat",Arial,sans-serif;font-size:1.3rem;font-weight:600;color:#fff;text-decoration:none}
+  .contact-aside dd a{font-family:"Inter",Arial,sans-serif;font-size:1.3rem;font-weight:600;color:#fff;text-decoration:none}
 
   /* ---------- process steps ---------- */
   .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:2.4rem}
@@ -499,7 +498,7 @@
     box-shadow:0 1px 2px rgba(20,17,15,.06);position:relative;
   }
   .step-num{
-    font-family:"Montserrat",Arial,sans-serif;font-weight:800;font-size:1.6rem;
+    font-family:"Inter",Arial,sans-serif;font-weight:800;font-size:1.6rem;
     color:var(--pool);opacity:.35;display:block;margin-bottom:.4rem;
   }
   .step h3{margin-bottom:.5rem}
@@ -516,7 +515,7 @@
     transition:box-shadow .2s ease,transform .2s ease;
   }
   .resource-card:hover{box-shadow:0 12px 26px rgba(20,17,15,.12);transform:translateY(-3px)}
-  .resource-card span{font-family:"Montserrat",Arial,sans-serif;font-weight:700;font-size:1.02rem}
+  .resource-card span{font-family:"Inter",Arial,sans-serif;font-weight:700;font-size:1.02rem}
   .resource-card .arrow{font-size:1.1rem;color:var(--pool);flex-shrink:0}
 
   /* ---------- financing ---------- */
