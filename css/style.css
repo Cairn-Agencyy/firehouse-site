@@ -309,6 +309,28 @@
     width:8px;height:8px;border-radius:50%;background:var(--pool);
   }
 
+  /* ---------- pillar showcase ---------- */
+  .pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  @media (max-width:760px){.pillar-grid{grid-template-columns:1fr}}
+  .pillar{
+    position:relative;display:flex;align-items:center;justify-content:center;
+    aspect-ratio:4/3;border-radius:calc(var(--r) + 6px);overflow:hidden;
+    text-decoration:none;isolation:isolate;
+  }
+  .pillar img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 80%;
+    filter:brightness(.55) saturate(1.1);
+    transition:filter .35s ease,transform .5s ease;
+  }
+  .pillar:hover img,.pillar:focus-visible img{filter:brightness(.7) saturate(1.2);transform:scale(1.06)}
+  .pillar span{
+    position:relative;z-index:1;color:#fff;font-family:"Inter",Arial,sans-serif;
+    font-weight:700;font-size:1.3rem;letter-spacing:.01em;text-align:center;
+    border:1.5px solid rgba(255,255,255,.55);border-radius:var(--r);
+    padding:1.1rem 1.6rem;transition:border-color .3s ease,transform .3s ease;
+  }
+  .pillar:hover span,.pillar:focus-visible span{border-color:#fff;transform:scale(1.04)}
+
   /* ---------- custom pools: dark bluish band ---------- */
   #pools{
     background:linear-gradient(180deg, var(--ink-soft) 0%, var(--navy) 55%, #16314A 100%);
@@ -498,7 +520,7 @@
   .social-slot p{margin:0;font-size:.88rem;color:var(--text-mute);max-width:52ch;margin-inline:auto}
 
   /* ---------- contact ---------- */
-  #contact{background:linear-gradient(180deg, var(--ink-soft) 0, var(--ink) 130px);color:#EDE6DB;position:relative}
+  #contact{background:linear-gradient(180deg, var(--ink-soft) 0%, var(--navy) 45%, var(--ink) 100%);color:#EDE6DB;position:relative}
   #contact h2{color:#fff}
   .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:start;margin-top:2.4rem}
   @media (max-width:860px){.form-grid{grid-template-columns:1fr}}
@@ -572,7 +594,7 @@
   .fin-logo{max-width:220px;margin-bottom:1.2rem}
 
   /* ---------- footer ---------- */
-  footer{background:#0C0A09;color:#8B837A;font-size:.85rem}
+  footer{background:var(--ink);color:#8B837A;font-size:.85rem}
   .foot-logo{display:flex;justify-content:center;padding-top:2.4rem}
   .foot-logo img{width:150px;height:auto;opacity:.85;transition:opacity .2s ease}
   .foot-logo:hover img{opacity:1}
