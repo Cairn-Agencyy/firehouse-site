@@ -230,6 +230,24 @@
   }
   .page-banner .banner-wave svg path{fill:#2A2521}
 
+  /* ---------- dark intro section right after a page banner ---------- */
+  .page-banner + section{
+    background:linear-gradient(180deg, var(--ink-soft) 0%, var(--navy) 55%, #16314A 100%);
+    color:#EDE6DB;position:relative;
+  }
+  .page-banner + section .eyebrow{color:#9DC4BB}
+  .page-banner + section h2{color:#fff}
+  .page-banner + section .lede{color:#C9C1B4}
+  .page-banner + section .featlist li{
+    background:rgba(255,255,255,.07);color:#EDE6DB;box-shadow:none;
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .page-banner + section .featlist li:hover{background:rgba(255,255,255,.12);box-shadow:0 10px 24px rgba(0,0,0,.3)}
+  .page-banner + section .featlist li::before{background:#8FBDB2}
+  .page-banner + section .featlist li b{color:#fff}
+  .page-banner + section .split figure img{box-shadow:0 20px 50px rgba(0,0,0,.35)}
+  .page-banner + section p:not(.eyebrow):not(.lede){color:#C9C1B4}
+
   .btn{
     display:inline-block;font-family:"Inter",sans-serif;
     font-size:.86rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
@@ -351,16 +369,18 @@
   .svc.is-finance{background:var(--stone-warm)}
 
   /* ---------- maintenance ---------- */
-  #maintenance{background:var(--pool);color:#F2EFE8;position:relative}
+  #maintenance{
+    background:linear-gradient(180deg, var(--paper) 0, var(--pool) 130px);
+    color:#F2EFE8;position:relative;
+  }
+  .page-banner + #maintenance{
+    background:linear-gradient(180deg, var(--ink-soft) 0, var(--pool) 130px);
+  }
   #maintenance h2{color:#fff}
   #maintenance .lede{color:#CBDED9}
-  .section-wave{
-    position:absolute;left:0;width:100%;height:clamp(80px,10vw,150px);
-    line-height:0;pointer-events:none;
-  }
-  .section-wave svg{display:block;width:100%;height:100%}
-  .section-wave.top{top:0;transform:translateY(-90%)}
-  .section-wave.bottom{bottom:0;transform:translateY(90%) scaleX(-1)}
+
+  #projects{background:linear-gradient(180deg, var(--pool) 0, var(--stone) 120px)}
+
   /* ---------- interactive plan cards ---------- */
   .plan-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.2rem;align-items:start}
   @media (max-width:980px){.plan-cards{grid-template-columns:repeat(2,1fr)}}
@@ -466,7 +486,7 @@
   .social-slot p{margin:0;font-size:.88rem;color:var(--text-mute);max-width:52ch;margin-inline:auto}
 
   /* ---------- contact ---------- */
-  #contact{background:var(--ink);color:#EDE6DB;position:relative}
+  #contact{background:linear-gradient(180deg, var(--stone-warm) 0, var(--ink) 130px);color:#EDE6DB;position:relative}
   #contact h2{color:#fff}
   .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:start;margin-top:2.4rem}
   @media (max-width:860px){.form-grid{grid-template-columns:1fr}}
