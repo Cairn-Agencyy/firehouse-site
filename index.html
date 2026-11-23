@@ -82,19 +82,26 @@
 
 <section id="pillars" class="pad">
   <div class="wrap">
-    <div class="pillar-grid">
-      <a class="pillar" href="custom-pools.html">
-        <img src="img/cp-fire-feature.jpg" alt="Custom Pools" style="object-position:center 78%">
-        <span>Custom Pools</span>
-      </a>
-      <a class="pillar" href="patios-patio-covers.html">
-        <img src="img/patio-hero.jpg" alt="Outdoor Living" style="object-position:15% 85%">
-        <span>Outdoor Living</span>
-      </a>
-      <a class="pillar" href="landscape-design-installation.html">
-        <img src="img/landscape-hero2.jpg" alt="Landscapes" style="object-position:center 55%">
-        <span>Landscapes</span>
-      </a>
+    <div class="pillar-switcher" data-interval="3500">
+      <div class="pillar-stage">
+        <a class="pillar-slide is-active" href="custom-pools.html" data-pillar="0">
+          <img src="img/cp-fire-feature.jpg" alt="Custom Pools" style="object-position:center 78%">
+          <span>Custom Pools</span>
+        </a>
+        <a class="pillar-slide" href="patios-patio-covers.html" data-pillar="1">
+          <img src="img/patio-hero.jpg" alt="Outdoor Living" style="object-position:15% 85%">
+          <span>Outdoor Living</span>
+        </a>
+        <a class="pillar-slide" href="landscape-design-installation.html" data-pillar="2">
+          <img src="img/landscape-hero2.jpg" alt="Landscapes" style="object-position:center 55%">
+          <span>Landscapes</span>
+        </a>
+      </div>
+      <div class="pillar-tabs">
+        <button class="pillar-tab is-active" type="button" data-pillar="0">Custom Pools</button>
+        <button class="pillar-tab" type="button" data-pillar="1">Outdoor Living</button>
+        <button class="pillar-tab" type="button" data-pillar="2">Landscapes</button>
+      </div>
     </div>
   </div>
 </section>
@@ -450,4 +457,5 @@
 
 <script src="js/nav.js"></script>
 <script src="js/reveal.js" defer></script>
+<script src="js/pillars.js" defer></script>
 <script src="js/contact-form.js"></script>
