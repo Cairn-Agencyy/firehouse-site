@@ -165,7 +165,7 @@
   }
   .hero-veil{
     position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(20,17,15,.4) 0%,rgba(20,17,15,.1) 42%,rgba(20,17,15,.55) 100%);
+    background:linear-gradient(180deg,rgba(20,17,15,.4) 0%,rgba(20,17,15,.1) 42%,rgba(20,17,15,.55) 78%,var(--ink-soft) 100%);
   }
   .hero-in{
     position:relative;
@@ -211,11 +211,14 @@
   .page-banner{
     position:relative;color:#fff;
     padding-block:clamp(3.5rem,9vw,6rem);
-    background:linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%);
+    background:linear-gradient(180deg, var(--ink) 0%, var(--navy) 58%, var(--ink-soft) 100%);
   }
   .page-banner-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(1.12) saturate(1.15) contrast(1.04)}
   .page-banner-veil{
     position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(20,17,15,.3) 0%,rgba(20,17,15,.04) 45%,rgba(20,17,15,.34) 100%);
+  }
+  .page-banner:has(.page-banner-bg) .page-banner-veil{
     background:linear-gradient(180deg,rgba(20,17,15,.74) 0%,rgba(20,17,15,.4) 45%,rgba(20,17,15,.84) 100%);
   }
   .page-banner .wrap{position:relative}
@@ -453,7 +456,7 @@
 
   /* ---------- maintenance ---------- */
   #maintenance{
-    background:linear-gradient(180deg, #16314A 0, var(--pool) 130px);
+    background:linear-gradient(180deg, #13302E 0, var(--pool) 160px);
     color:#F2EFE8;position:relative;
   }
   .page-banner + #maintenance{
@@ -649,7 +652,13 @@
   .fin-logo{max-width:220px;margin-bottom:1.2rem}
 
   /* ---------- footer ---------- */
-  footer{background:var(--ink);color:#8B837A;font-size:.85rem}
+  footer{
+    background:linear-gradient(180deg, var(--ink-soft) 0, var(--ink) 70px);
+    color:#8B837A;font-size:.85rem;
+  }
+  #contact + footer{background:var(--ink)}
+  #services + footer{background:linear-gradient(180deg, #13302E 0, var(--ink) 70px)}
+  #maintenance + footer{background:linear-gradient(180deg, var(--pool) 0, var(--ink) 70px)}
   .foot-logo{display:flex;justify-content:center;padding-top:2.4rem}
   .foot-logo img{width:150px;height:auto;opacity:.85;transition:opacity .2s ease}
   .foot-logo:hover img{opacity:1}
