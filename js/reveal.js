@@ -1,7 +1,7 @@
   (function(){
     if (!('IntersectionObserver' in window)) return;
     var groups = document.querySelectorAll(
-      '.svc-grid, .featlist, .steps, .plan-cards, .resource-grid, .gal, .split, .fin-perks, .pillar-switcher'
+      '.svc-grid, .featlist, .steps, .plan-cards, .resource-grid, .gal, .split, .fin-perks, .pillar-grid'
     );
     if (!groups.length) return;
 
