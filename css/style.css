@@ -210,7 +210,7 @@
   /* ---------- subpage banner ---------- */
   .page-banner{
     position:relative;color:#fff;
-    padding-block:clamp(3.5rem,9vw,6rem);
+    padding-block:clamp(2.4rem,6vw,4rem);
     background:linear-gradient(180deg, var(--ink) 0%, var(--navy) 58%, var(--ink-soft) 100%);
   }
   .page-banner-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(1.12) saturate(1.15) contrast(1.04)}
@@ -237,6 +237,7 @@
   /* ---------- dark gradient continues through every section after a page banner ---------- */
   .page-banner + section{
     background:linear-gradient(180deg, var(--ink-soft) 0%, var(--navy) 50%, var(--ink-soft) 100%);
+    padding-top:clamp(2rem,5vw,3.2rem);
   }
   .page-banner + section + section{
     background:linear-gradient(180deg, var(--ink-soft) 0%, #1A3A3C 50%, var(--ink-soft) 100%);
@@ -292,6 +293,9 @@
   .page-banner + section + section p:not(.eyebrow):not(.lede),
   .page-banner + section + section + section p:not(.eyebrow):not(.lede),
   .page-banner + section + section + section + section p:not(.eyebrow):not(.lede){color:#C9C1B4}
+  /* .svc cards sit on their own light backgrounds even inside a dark section -- the dark-section
+     paragraph color above should never reach into them */
+  .page-banner + #services .svc p{color:var(--text)}
 
   /* any dark accent card (navy/pool .wrap) that holds a featlist needs the same light-on-translucent treatment */
   .wrap[style*="--navy"] .featlist li,
@@ -344,7 +348,7 @@
 
   /* ---------- generic section ---------- */
   section{scroll-margin-top:84px}
-  .pad{padding-block:clamp(4.5rem,10vw,7.5rem)}
+  .pad{padding-block:clamp(3rem,7vw,5.5rem)}
   .lede{font-size:1.1rem;max-width:62ch;color:#C9C1B4;margin:1.1rem 0 0}
 
   /* ---------- feature split ---------- */
@@ -367,10 +371,14 @@
   }
 
   /* ---------- pillar showcase: full-bleed single stage ---------- */
-  #pillars{background:var(--ink-soft);border-top:1px solid rgba(255,255,255,.12)}
+  #pillars{
+    background:var(--ink-soft);border-top:1px solid rgba(255,255,255,.12);
+    padding-inline:var(--gut);padding-block:1.6rem;
+  }
   .pillar-stage{
-    position:relative;width:100%;overflow:hidden;
-    aspect-ratio:21/9;max-height:620px;min-height:320px;
+    position:relative;width:100%;max-width:var(--maxw);margin-inline:auto;overflow:hidden;
+    aspect-ratio:21/9;max-height:520px;min-height:300px;
+    border-radius:calc(var(--r) + 8px);
   }
   @media (max-width:760px){.pillar-stage{aspect-ratio:4/5;max-height:560px}}
   .pillar-cat{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity 1s ease}
@@ -536,7 +544,7 @@
   .svc h3{font-family:"Inter",Arial,sans-serif;font-size:1.13rem;color:var(--text)}
   .svc p{margin:0;font-size:.92rem;color:var(--text);line-height:1.55}
   /* services.html gets a bit more breathing room than the homepage preview grid */
-  .page-banner + #services .svc-grid{gap:1.5rem}
+  .page-banner + #services .svc-grid{gap:1.5rem;margin-top:1.2rem}
   .page-banner + #services .svc-body{padding:1.9rem 1.7rem;gap:.65rem}
   .page-banner + #services .svc h3{font-size:1.22rem}
   .page-banner + #services .svc p{font-size:.97rem}
@@ -750,7 +758,7 @@
   .phase-panel.is-active{position:relative;opacity:1;transform:translateX(0);pointer-events:auto}
   .phase-num{
     font-family:"Inter",Arial,sans-serif;font-weight:800;font-size:2rem;
-    color:var(--pool-lift);opacity:.4;display:block;margin-bottom:.3rem;
+    color:#F2D9A8;opacity:.55;display:block;margin-bottom:.3rem;
   }
   .phase-panel h3{margin-bottom:.5rem;color:#fff}
   .phase-panel p{margin:0;font-size:.95rem;color:#C9C1B4;line-height:1.6;max-width:62ch}
@@ -764,7 +772,7 @@
   }
 
   /* ---------- resource / vendor carousel ---------- */
-  .resource-carousel{position:relative;margin-top:2.4rem}
+  .resource-carousel{position:relative;margin-top:1rem}
   .resource-track{
     display:flex;gap:1.1rem;overflow-x:auto;scroll-snap-type:x proximity;
     padding:.3rem .2rem 1rem;scrollbar-width:none;
@@ -773,27 +781,21 @@
   .resource-card{
     flex:0 0 300px;scroll-snap-align:start;
     display:flex;flex-direction:column;align-items:flex-start;gap:1rem;
-    background:linear-gradient(160deg, var(--paper) 0%, var(--stone) 100%);
+    background:linear-gradient(160deg, var(--navy) 0%, var(--ink-soft) 100%);
     border-radius:calc(var(--r) + 6px);padding:1.8rem 1.6rem;
     box-shadow:0 10px 18px rgba(10,8,6,.3),0 2px 4px rgba(10,8,6,.18);
-    text-decoration:none;color:var(--text);
+    text-decoration:none;color:#EDE6DB;
     transition:box-shadow .3s ease,transform .3s cubic-bezier(.2,.8,.3,1.3);
   }
-  .resource-card:hover{box-shadow:0 26px 40px rgba(10,8,6,.35);transform:translateY(-8px) scale(1.015)}
-  .resource-badge{
-    width:40px;height:40px;border-radius:50%;flex-shrink:0;
-    display:flex;align-items:center;justify-content:center;
-    font-family:"Fraunces","Georgia",serif;font-weight:600;font-size:1.1rem;color:#fff;
-    background:var(--pool);
+  .resource-card:hover{box-shadow:0 26px 40px rgba(10,8,6,.4);transform:translateY(-8px) scale(1.015)}
+  .resource-logo{
+    width:100%;height:56px;display:flex;align-items:center;justify-content:center;
+    background:#fff;border-radius:var(--r);padding:.8rem 1rem;
   }
-  .resource-card:nth-child(3n+2) .resource-badge{background:var(--navy)}
-  .resource-card:nth-child(3n+3) .resource-badge{background:var(--ember)}
-  .resource-logo{width:100%;height:52px;display:flex;align-items:center;justify-content:flex-start}
   .resource-logo img{max-width:100%;max-height:100%;object-fit:contain}
-  .resource-logo-dark{background:var(--navy);border-radius:var(--r);padding:.9rem 1.1rem;justify-content:center}
-  .resource-name{font-family:"Inter",Arial,sans-serif;font-weight:700;font-size:1.05rem;color:var(--text);line-height:1.3}
+  .resource-name{font-family:"Inter",Arial,sans-serif;font-weight:700;font-size:1.05rem;color:#fff;line-height:1.3}
   .resource-card .arrow{
-    font-size:1.1rem;color:var(--pool);margin-top:auto;
+    font-size:1.1rem;color:#8FBDB2;margin-top:auto;
     transition:transform .25s ease;
   }
   .resource-card:hover .arrow{transform:translateX(5px)}
@@ -801,11 +803,11 @@
     position:absolute;top:50%;transform:translateY(-50%);z-index:2;
     display:flex;align-items:center;justify-content:center;
     width:40px;height:40px;border-radius:50%;flex-shrink:0;
-    background:var(--paper);border:1px solid var(--stone-line);color:var(--text);cursor:pointer;
-    box-shadow:0 6px 16px rgba(20,17,15,.18);
+    background:rgba(10,8,6,.4);border:1.5px solid rgba(255,255,255,.3);color:#fff;cursor:pointer;
+    box-shadow:0 6px 16px rgba(20,17,15,.3);
     transition:background .2s ease,transform .2s ease;
   }
-  .resource-arrow:hover{background:var(--stone-warm);transform:translateY(-50%) scale(1.06)}
+  .resource-arrow:hover{background:rgba(10,8,6,.65);border-color:#fff;transform:translateY(-50%) scale(1.06)}
   .resource-arrow svg{width:16px;height:16px}
   .resource-prev{left:-18px}
   .resource-next{right:-18px}
