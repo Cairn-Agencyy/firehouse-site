@@ -83,10 +83,23 @@
   }
   nav > a:hover,nav > a:focus-visible{color:#fff;border-bottom-color:var(--ember)}
   nav > a[aria-current="page"]{color:#fff;border-bottom-color:var(--ember)}
+  .topbar-contact{margin-left:auto;display:flex;align-items:center;gap:1.1rem}
   .tel{
+    display:inline-flex;align-items:center;gap:.4rem;
     font-family:"Inter",Arial,sans-serif;font-size:1.02rem;font-weight:600;
     color:#fff;text-decoration:none;white-space:nowrap;
   }
+  .tel svg{width:16px;height:16px;flex-shrink:0;color:var(--pool-lift)}
+  .topbar-social{display:flex;gap:.55rem}
+  .topbar-social a{
+    display:flex;align-items:center;justify-content:center;
+    width:30px;height:30px;border-radius:50%;flex-shrink:0;
+    border:1px solid rgba(255,255,255,.22);color:#E8E2D9;
+    transition:color .2s ease,border-color .2s ease,background .2s ease;
+  }
+  .topbar-social a:hover{color:#fff;border-color:#fff;background:rgba(255,255,255,.08)}
+  .topbar-social svg{width:14px;height:14px}
+  .nav-social{display:none}
   .nav-toggle{
     display:none;margin-left:auto;background:none;border:0;padding:.4rem;
     cursor:pointer;color:#fff;
@@ -136,7 +149,20 @@
     nav.is-open{display:flex}
     nav > a{padding-block:.65rem;width:100%;border-bottom:1px solid rgba(255,255,255,.08)}
     .nav-toggle{display:block;order:3;flex-shrink:0}
-    .tel{order:2;margin-left:auto;font-size:.9rem;white-space:nowrap}
+    .topbar-contact{order:2;margin-left:auto}
+    .tel{font-size:.84rem;white-space:nowrap}
+    .tel svg{width:14px;height:14px}
+    .topbar-social{display:none}
+    .nav-social{
+      display:flex;gap:.7rem;margin-top:.3rem;padding-top:1rem;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .nav-social a{
+      display:flex;align-items:center;justify-content:center;
+      width:38px;height:38px;border-radius:50%;flex-shrink:0;
+      border:1px solid rgba(255,255,255,.22);color:#E8E2D9;
+    }
+    .nav-social svg{width:17px;height:17px}
     .has-drop{width:100%}
     .drop-btn{
       width:100%;justify-content:space-between;padding-block:.65rem;
