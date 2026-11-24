@@ -37,8 +37,9 @@
         return;
       }
 
-      /* Lead payload, shaped for the JobTread sync. Not yet posted anywhere:
-         the endpoint and the JobTread field mapping are the next build step. */
+      /* Lead payload, shaped for the JobTread sync. Posted to the cairn-fhp
+         service, which runs the same account/location/contact/job creation
+         already proven out for phone leads. See main.py, website_lead_webhook. */
       var lead = {
         firstName:     document.getElementById('fName').value.trim(),
         lastName:      document.getElementById('lName').value.trim(),
@@ -51,11 +52,33 @@
         features:      Array.prototype.slice.call(document.querySelectorAll('input[name=features]:checked')).map(function(c){ return c.value; }),
         hearAbout:     document.getElementById('fHeard').value,
         vision:        document.getElementById('fNotes').value.trim(),
-        source:        'Website'
+        // Hidden from real visitors. A bot filling every field it finds fills
+        // this one too, and a non-empty value here is how the backend tells
+        // the two apart.
+        hp:            document.getElementById('fCompany').value
       };
-      console.log('Lead captured, pending JobTread sync:', lead);
 
-      msg.textContent = 'Thank you. In the finished site this creates your request and alerts the team right away. This preview does not send yet.';
-      form.querySelector('button[type=submit]').disabled = true;
+      var submitBtn = form.querySelector('button[type=submit]');
+      submitBtn.disabled = true;
+      msg.textContent = 'Sending your request...';
+
+      fetch('https://cairn-fhp-87886235286.us-central1.run.app/webhooks/website-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(lead)
+      })
+        .then(function(res){
+          if (!res.ok) throw new Error('Request failed with status ' + res.status);
+          return res.json();
+        })
+        .then(function(){
+          msg.textContent = 'Thank you! Your request has been sent and our team will be in touch shortly.';
+          form.reset();
+        })
+        .catch(function(err){
+          console.error('Lead submission failed:', err);
+          msg.textContent = 'Something went wrong sending your request. Please call or text us at (903) 340-2454 and we will get you taken care of.';
+          submitBtn.disabled = false;
+        });
     });
   })();
