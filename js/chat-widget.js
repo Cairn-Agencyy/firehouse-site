@@ -44,7 +44,12 @@
       + '.fhp-chat-msg.fhp-pending{opacity:.6;}'
       + '.fhp-chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--stone-line,#D8CCB8);}'
       + '.fhp-chat-form input{flex:1;padding:10px 12px;border-radius:8px;border:1px solid var(--stone-line,#D8CCB8);'
-      + 'font-size:14px;font-family:inherit;}'
+      // The site's global input/select/textarea rule (for the dark contact
+      // form section) sets color:#fff. Without an explicit override here,
+      // this input inherits white text on its own light background and
+      // looks blank while typing, even though the value is really there.
+      + 'font-size:14px;font-family:inherit;color:var(--text,#221E1A);background:#fff;}'
+      + '.fhp-chat-form input::placeholder{color:var(--text-mute,#6B6259);}'
       + '.fhp-chat-form button{background:var(--pool,#1E5049);color:#fff;border:none;border-radius:8px;'
       + 'padding:0 16px;font-weight:600;cursor:pointer;}'
       + '.fhp-chat-form button:disabled{opacity:.5;cursor:default;}'
