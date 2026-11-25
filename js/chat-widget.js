@@ -53,7 +53,18 @@
       + '.fhp-chat-form button{background:var(--pool,#1E5049);color:#fff;border:none;border-radius:8px;'
       + 'padding:0 16px;font-weight:600;cursor:pointer;}'
       + '.fhp-chat-form button:disabled{opacity:.5;cursor:default;}'
-      + '@media (max-width:480px){.fhp-chat-panel{right:16px;left:16px;width:auto;}}';
+      + '.fhp-chat-label{position:fixed;bottom:36px;right:86px;background:var(--ink,#14110F);color:#fff;'
+      + 'padding:9px 16px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap;'
+      + 'box-shadow:0 6px 18px rgba(0,0,0,.25);cursor:pointer;z-index:9998;line-height:1.2;border:none;'
+      + 'font-family:inherit;}'
+      + '.fhp-chat-label.fhp-chat-label-hidden{display:none;}'
+      + '.fhp-chat-label-text-short{display:none;}'
+      + '@media (max-width:480px){'
+      + '.fhp-chat-panel{right:16px;left:16px;width:auto;}'
+      + '.fhp-chat-label{right:76px;bottom:34px;padding:7px 12px;font-size:12px;}'
+      + '.fhp-chat-label-text-full{display:none;}'
+      + '.fhp-chat-label-text-short{display:inline;}'
+      + '}';
     var style = document.createElement('style');
     style.textContent = css;
     document.head.appendChild(style);
@@ -79,8 +90,15 @@
       + '<button type="submit">Send</button>'
       + '</form>';
 
+    var label = document.createElement('button');
+    label.type = 'button';
+    label.className = 'fhp-chat-label';
+    label.innerHTML = '<span class="fhp-chat-label-text-full">Chat with a Firehouse Pools assistant now</span>'
+      + '<span class="fhp-chat-label-text-short">Chat with us now</span>';
+
     document.body.appendChild(bubble);
     document.body.appendChild(panel);
+    document.body.appendChild(label);
 
     var log = panel.querySelector('.fhp-chat-log');
     var form = panel.querySelector('.fhp-chat-form');
@@ -113,8 +131,17 @@
       panel.classList.remove('fhp-chat-open');
     }
 
+    function hideLabel(){
+      label.classList.add('fhp-chat-label-hidden');
+    }
+
     bubble.addEventListener('click', function(){
+      hideLabel();
       if (panel.classList.contains('fhp-chat-open')) { closePanel(); } else { openPanel(); }
+    });
+    label.addEventListener('click', function(){
+      hideLabel();
+      openPanel();
     });
     closeBtn.addEventListener('click', closePanel);
 
